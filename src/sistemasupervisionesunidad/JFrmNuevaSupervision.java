@@ -574,27 +574,37 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
                 txtPersona4.setText("--");
                 txtPersona5.setText("--");
                 txtPersona6.setText("--");
+                jTxtCargoPersona3.setText("--");
+                jTxtCargoPersona4.setText("--");
+                jTxtCargoPersona5.setText("--");
+                jTxtCargoPersona6.setText("--");                
                 break;
             case 3: 
                 txtPersona2.setText("");
                 txtPersona3.setText("");                
                 txtPersona4.setText("--");
                 txtPersona5.setText("--");
-                txtPersona6.setText("--");                
+                txtPersona6.setText("--"); 
+                jTxtCargoPersona4.setText("--");
+                jTxtCargoPersona5.setText("--");
+                jTxtCargoPersona6.setText("--");                 
                 break;
             case 2:
                 txtPersona2.setText("");
                 txtPersona3.setText("");                
                 txtPersona4.setText("");                
                 txtPersona5.setText("--");
-                txtPersona6.setText("--");                   
+                txtPersona6.setText("--");     
+                jTxtCargoPersona5.setText("--");
+                jTxtCargoPersona6.setText("--");                 
                 break;
             case 1:
                 txtPersona2.setText("");
                 txtPersona3.setText("");                
                 txtPersona4.setText("");                
                 txtPersona5.setText("");                
-                txtPersona6.setText("--");                   
+                txtPersona6.setText("--");      
+                jTxtCargoPersona6.setText("--");                 
                 break;
             default: break;
         }
