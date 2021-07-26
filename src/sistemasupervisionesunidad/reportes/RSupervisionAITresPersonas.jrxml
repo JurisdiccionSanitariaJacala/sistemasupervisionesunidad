@@ -11,6 +11,8 @@
 	<parameter name="cargo_persona_uno" class="java.lang.String"/>
 	<parameter name="persona_dos" class="java.lang.String"/>
 	<parameter name="cargo_persona_dos" class="java.lang.String"/>
+	<parameter name="persona_tres" class="java.lang.String"/>
+	<parameter name="cargo_persona_tres" class="java.lang.String"/>        
 	<background>
 		<band splitType="Stretch"/>
 	</background>
