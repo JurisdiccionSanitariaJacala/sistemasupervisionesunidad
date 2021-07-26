@@ -443,51 +443,81 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
             //una
             fillComboBoxWithNoValue(5);
             txtPersona1.setEnabled(true);
+            jTxtCargoPersona1.setEnabled(true);
             txtPersona2.setEnabled(false);
+            jTxtCargoPersona2.setEnabled(false);
             txtPersona3.setEnabled(false);
+            jTxtCargoPersona3.setEnabled(false);
             txtPersona4.setEnabled(false);
+            jTxtCargoPersona4.setEnabled(false);
             txtPersona5.setEnabled(false);
+            jTxtCargoPersona5.setEnabled(false);
             txtPersona6.setEnabled(false);
+            jTxtCargoPersona6.setEnabled(false);
             break;
             case 1:
             //dos
             fillComboBoxWithNoValue(4);
             txtPersona1.setEnabled(true);
+            jTxtCargoPersona1.setEnabled(true);
             txtPersona2.setEnabled(true);
+            jTxtCargoPersona2.setEnabled(true);
             txtPersona3.setEnabled(false);
+            jTxtCargoPersona3.setEnabled(false);
             txtPersona4.setEnabled(false);
+            jTxtCargoPersona4.setEnabled(false);
             txtPersona5.setEnabled(false);
+            jTxtCargoPersona5.setEnabled(false);
             txtPersona6.setEnabled(false);
+            jTxtCargoPersona6.setEnabled(false);
             break;
             case 2:
             //tres
             fillComboBoxWithNoValue(3);
             txtPersona1.setEnabled(true);
+            jTxtCargoPersona1.setEnabled(true);
             txtPersona2.setEnabled(true);
+            jTxtCargoPersona2.setEnabled(true);
             txtPersona3.setEnabled(true);
+            jTxtCargoPersona3.setEnabled(true);
             txtPersona4.setEnabled(false);
+            jTxtCargoPersona4.setEnabled(false);
             txtPersona5.setEnabled(false);
+            jTxtCargoPersona5.setEnabled(false);
             txtPersona6.setEnabled(false);
+            jTxtCargoPersona6.setEnabled(false);
             break;
             case 3:
             //cuatro
             fillComboBoxWithNoValue(2);
             txtPersona1.setEnabled(true);
+            jTxtCargoPersona1.setEnabled(true);
             txtPersona2.setEnabled(true);
+            jTxtCargoPersona2.setEnabled(true);
             txtPersona3.setEnabled(true);
+            jTxtCargoPersona3.setEnabled(true);
             txtPersona4.setEnabled(true);
+            jTxtCargoPersona4.setEnabled(true);
             txtPersona5.setEnabled(false);
             txtPersona6.setEnabled(false);
+            jTxtCargoPersona5.setEnabled(false);
+            jTxtCargoPersona6.setEnabled(false);
             break;
             case 4:
             //cinco
             fillComboBoxWithNoValue(1);
             txtPersona1.setEnabled(true);
+            jTxtCargoPersona1.setEnabled(true);
             txtPersona2.setEnabled(true);
+            jTxtCargoPersona2.setEnabled(true);
             txtPersona3.setEnabled(true);
+            jTxtCargoPersona3.setEnabled(true);
             txtPersona4.setEnabled(true);
+            jTxtCargoPersona4.setEnabled(true);
             txtPersona5.setEnabled(true);
+            jTxtCargoPersona5.setEnabled(true);
             txtPersona6.setEnabled(false);
+            jTxtCargoPersona6.setEnabled(false);
             break;
             case 5:
             //seis
@@ -498,6 +528,12 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
             txtPersona4.setEnabled(true);
             txtPersona5.setEnabled(true);
             txtPersona6.setEnabled(true);
+            jTxtCargoPersona1.setEnabled(true);
+            jTxtCargoPersona2.setEnabled(true);
+            jTxtCargoPersona3.setEnabled(true);
+            jTxtCargoPersona4.setEnabled(true);
+            jTxtCargoPersona5.setEnabled(true);
+            jTxtCargoPersona6.setEnabled(true);
             break;
             default:
             JOptionPane.showMessageDialog(null,"Prueba de mensaje");
@@ -518,7 +554,7 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
                 txtPersona3.setText(String.valueOf(""));
                 txtPersona4.setText(String.valueOf(""));
                 txtPersona5.setText(String.valueOf(""));
-                txtPersona6.setText(String.valueOf(""));                
+                txtPersona6.setText(String.valueOf(""));        
                 break;
             case 5: //cinco personas
                 txtPersona2.setText("--");
@@ -526,6 +562,11 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
                 txtPersona4.setText("--");
                 txtPersona5.setText("--");
                 txtPersona6.setText("--");
+                jTxtCargoPersona2.setText("--");
+                jTxtCargoPersona3.setText("--");
+                jTxtCargoPersona4.setText("--");
+                jTxtCargoPersona5.setText("--");
+                jTxtCargoPersona6.setText("--");
                 break;
             case 4:
                 txtPersona2.setText("");
