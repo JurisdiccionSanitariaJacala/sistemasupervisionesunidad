@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a8e648c0-0abd-47c5-84ef-a0cf80b35602">
+	<property name="ireport.zoom" value="1.3310000000000106"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="575"/>
+	<parameter name="clues_unidad" class="java.lang.String"/>
+	<parameter name="descripcion_actividad" class="java.lang.String"/>
+	<parameter name="depto_supervisor" class="java.lang.String"/>
+	<parameter name="fecha_supervision" class="java.lang.String"/>
+	<parameter name="persona_uno" class="java.lang.String"/>
+	<parameter name="cargo_persona_uno" class="java.lang.String"/>
+	<parameter name="persona_dos" class="java.lang.String"/>
+	<parameter name="cargo_persona_dos" class="java.lang.String"/>        
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="82" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-51" y="28" width="21" height="20" uuid="4f0f3271-e10a-4d63-931e-52f1579e3be4"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="40" width="589" height="20" uuid="9d6f1af1-3353-4fd4-a993-00f96ec5a95a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOTA DE SUPERVISIÓN]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="7" y="60" width="589" height="20" uuid="751c91e9-1898-4db5-8f9c-45fadef7e36f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{depto_supervisor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="5" width="589" height="20" uuid="bd98791b-5dea-4291-8c85-65014d3a7c94"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SERVICIOS DE SALUD DE HIDALGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="25" width="589" height="20" uuid="0046da01-7a77-401e-9e8e-479c90896395"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[JURISDICCIÓN NO. 16 JACALA]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="158" splitType="Stretch">
+			<staticText>
+				<reportElement x="7" y="11" width="130" height="15" uuid="045fa3f2-808b-497b-af8d-55511d523df0"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[AREA SUPERVISADA]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="109" y="30" width="11" height="10" uuid="74d50cb7-fa62-4599-8e78-7bcb331f59de"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="122" y="30" width="34" height="10" uuid="33aafd06-dedb-4862-a94c-4a800b4c196f"/>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SISTEMAS]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="109" y="45" width="11" height="10" uuid="300689e3-bbe8-47e4-bd38-6edad625ec4e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="163" y="46" width="11" height="10" uuid="e8e1400b-fdff-4864-a74b-12d712b9022a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="237" y="46" width="11" height="10" uuid="d4bc9287-b1f9-4141-acd8-3b3fbec6db16"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="9" y="80" width="100" height="20" uuid="a94fdda8-52a1-4faa-ab86-1cec625c54f0"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OTRA AREA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="251" y="46" width="62" height="10" uuid="c2101504-5faf-419b-87b1-cc299664ec1c"/>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SALUD MENTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="176" y="46" width="58" height="10" uuid="c25e39de-1df4-4862-93c7-8fe987e88be1"/>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ADOLESCENTES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="122" y="46" width="34" height="10" uuid="fd176c42-aace-4032-9945-2be8558e7dc7"/>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PAQ 4 Y 5]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="163" y="30" width="11" height="10" uuid="04c216d8-24e5-43c3-9360-c487a30207cf"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="176" y="30" width="38" height="10" uuid="bd32010f-ac21-49c5-beef-7f994c123668"/>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PAQUETE 3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="122" y="60" width="41" height="10" uuid="2723c80e-dd67-451b-b16d-678e5a658f35"/>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ENFERMERÍA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="30" width="38" height="10" uuid="80097cdf-57ae-4589-b55d-b954fd653f96"/>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TB/VIH]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="224" y="30" width="11" height="10" uuid="64c3808e-d784-43fa-b17f-d571476fda19"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="292" y="30" width="44" height="10" uuid="01f0e150-7ff1-42e1-9ec5-6ea76dc45582"/>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROMOCIÓN]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="278" y="30" width="11" height="10" uuid="43bad582-aba9-4393-aaba-08316100aebe"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="359" y="30" width="44" height="10" uuid="01e2d980-230e-4c90-85c6-700c5603e5c9"/>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VACUNACIÓN]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="346" y="30" width="11" height="10" uuid="17af80b4-759b-4da7-9284-f301996dfc28"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="420" y="30" width="38" height="10" uuid="1a918503-5d55-4af9-b9b2-03ebe01deaeb"/>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CRÓNICOS]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="407" y="30" width="11" height="10" uuid="f7e89d7b-bdea-4040-804d-c4b0a29d8908"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="331" y="46" width="36" height="10" uuid="b37388fd-de78-43b2-8d67-2967c698df34"/>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ALMACÉN]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="109" y="60" width="11" height="10" uuid="52319e5d-9867-4154-8eaa-86085245d100"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="318" y="46" width="11" height="10" uuid="53a4cb84-7c39-4f1a-8c9f-bcf56bfd286a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="372" y="46" width="11" height="10" uuid="b7827640-0fef-4537-a865-c4d685469533"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="385" y="47" width="44" height="10" uuid="92df83b3-0984-4abf-899a-a02b9c2fb6b6"/>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INVENTARIOS]]></text>
+			</staticText>
+			<line>
+				<reportElement x="94" y="96" width="450" height="1" uuid="fbc7d40a-3115-464b-8563-1929318fb19c"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="9" y="105" width="573" height="21" backcolor="#CCCCCC" uuid="29a6740c-1473-41d9-9a69-2cec8a0b1193"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE ACTIVIDADES]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="60" y="131" width="86" height="20" uuid="0f563bac-21be-4d80-a725-eb31d57654b5"/>
+				<textFieldExpression><![CDATA[$P{clues_unidad}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="131" width="49" height="20" uuid="bd2bc10c-1043-491f-ab36-cb8d52912fe4"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLUES:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="298" y="131" width="147" height="20" uuid="50dc3da2-5332-4fc8-980a-1aa75842f79a"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA DE SUPERVISION:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="447" y="131" width="120" height="20" uuid="8a6086a8-6be9-45e6-a342-bee7070c9516"/>
+				<textFieldExpression><![CDATA[$P{fecha_supervision}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="10" y="154" width="575" height="1" uuid="0d1d35d6-b7a7-48f8-8632-d405b9f5fdf3"/>
+				<graphicElement>
+					<pen lineStyle="Dotted" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+		<band height="376">
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" mode="Opaque" x="12" y="11" width="568" height="21" backcolor="#F5F5F5" uuid="0972d3f4-eb4f-432e-a2a9-42449c4121fd"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isItalic="true" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{descripcion_actividad}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="155" splitType="Stretch">
+			<line>
+				<reportElement x="31" y="66" width="145" height="1" uuid="d4e4c660-d438-4cad-ae26-0f2cbe056efb"/>
+			</line>
+			<staticText>
+				<reportElement x="414" y="68" width="144" height="47" uuid="d5af6c41-4f0b-4823-b1b9-94163215425a"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[NOMBRE Y FIRMA
+Vo.Bo]]></text>
+			</staticText>
+			<line>
+				<reportElement x="391" y="65" width="189" height="1" uuid="980bae4d-d5c7-48b2-a9e1-e70850122ec9"/>
+			</line>
+			<line>
+				<reportElement x="9" y="5" width="575" height="1" uuid="8ed6250b-2578-4bdf-821f-3e4783f59b7f"/>
+				<graphicElement>
+					<pen lineStyle="Dotted" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="12" y="67" width="188" height="20" uuid="b7539608-707a-4333-af09-c2baaae4c7b2"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{persona_uno}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="12" y="87" width="188" height="20" uuid="9b0d22fe-fa26-4a39-8b81-697e4add69b7"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cargo_persona_uno}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="224" y="65" width="145" height="1" uuid="791339e4-3cfb-46da-9eed-7a0240fd4875"/>
+			</line>
+			<textField>
+				<reportElement x="224" y="68" width="145" height="20" uuid="817d3cd3-b624-4b56-8b1c-8b546b7c8b64"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{persona_dos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="228" y="88" width="144" height="20" uuid="27a86572-fbe6-461a-b424-cbb101ad6797"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cargo_persona_dos}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="55" splitType="Stretch">
+			<staticText>
+				<reportElement x="3" y="4" width="577" height="21" forecolor="#909090" uuid="35daa897-5c5c-4d04-a0ca-d85d34f0c304"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Sistema para Notas de Supervisiones a Unidades de Salud]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="25" width="577" height="15" forecolor="#909090" uuid="320aedbe-47c6-477f-b6ce-4e91589b4ea8"/>
+				<textElement textAlignment="Center">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Jurisdiccion Sanitaria Jacala - Departamento de Informática]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="40" width="577" height="15" forecolor="#909090" uuid="1feb2829-da07-4802-99c0-a7a03ce445fd"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[V1.0]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>
