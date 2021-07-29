@@ -12,7 +12,7 @@
 	<parameter name="persona_dos" class="java.lang.String"/>
 	<parameter name="cargo_persona_dos" class="java.lang.String"/>
 	<parameter name="persona_tres" class="java.lang.String"/>
-	<parameter name="cargo_persona_tres" class="java.lang.String"/>        
+	<parameter name="cargo_persona_tres" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -48,12 +48,12 @@
 				<text><![CDATA[JURISDICCIÓN NO. 16 JACALA]]></text>
 			</staticText>
 			<image>
-				<reportElement x="500" y="5" width="67" height="75" uuid="6ec71147-b57a-4605-8095-7c49f5384ad9"/>
-				<imageExpression><![CDATA["C:\\Users\\INVENTARIOS\\Downloads\\sistemasupervisionesunidad-final\\sistemasupervisionesunidad-final\\img\\Escudo-100px.png"]]></imageExpression>
+				<reportElement x="20" y="10" width="100" height="61" uuid="93682951-db0b-44a8-a99d-0a8487575892"/>
+				<imageExpression><![CDATA["C:\\Users\\usuario\\Documents\\Informatica\\Desarrollo\\Proyectos\\sistemasupervisionesunidad\\src\\resources\\pictures\\SSH-100px.png"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="7" y="5" width="113" height="75" uuid="462b35c6-a6d0-497a-a818-00fb37cca48c"/>
-				<imageExpression><![CDATA["C:\\Users\\INVENTARIOS\\Downloads\\sistemasupervisionesunidad-final\\sistemasupervisionesunidad-final\\img\\SSH-100px.png"]]></imageExpression>
+				<reportElement x="491" y="2" width="89" height="80" uuid="d2177e7d-06e0-40d9-bb1b-37e0eff4a8d9"/>
+				<imageExpression><![CDATA["C:\\Users\\usuario\\Documents\\Informatica\\Desarrollo\\Proyectos\\sistemasupervisionesunidad\\src\\resources\\pictures\\Escudo-100px.png"]]></imageExpression>
 			</image>
 		</band>
 	</pageHeader>
@@ -248,7 +248,7 @@
 	<columnFooter>
 		<band height="155" splitType="Stretch">
 			<line>
-				<reportElement x="31" y="66" width="145" height="1" uuid="d4e4c660-d438-4cad-ae26-0f2cbe056efb"/>
+				<reportElement x="31" y="18" width="145" height="1" uuid="d4e4c660-d438-4cad-ae26-0f2cbe056efb"/>
 			</line>
 			<staticText>
 				<reportElement x="414" y="68" width="144" height="47" uuid="d5af6c41-4f0b-4823-b1b9-94163215425a"/>
@@ -259,7 +259,7 @@
 Vo.Bo]]></text>
 			</staticText>
 			<line>
-				<reportElement x="391" y="65" width="189" height="1" uuid="980bae4d-d5c7-48b2-a9e1-e70850122ec9"/>
+				<reportElement x="393" y="64" width="189" height="1" uuid="980bae4d-d5c7-48b2-a9e1-e70850122ec9"/>
 			</line>
 			<line>
 				<reportElement x="9" y="5" width="575" height="1" uuid="8ed6250b-2578-4bdf-821f-3e4783f59b7f"/>
@@ -268,36 +268,53 @@ Vo.Bo]]></text>
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true">
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="12" y="67" width="188" height="20" uuid="b7539608-707a-4333-af09-c2baaae4c7b2"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="31" y="19" width="143" height="20" uuid="b7539608-707a-4333-af09-c2baaae4c7b2"/>
 				<textElement textAlignment="Center">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{persona_uno}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="12" y="87" width="188" height="20" uuid="9b0d22fe-fa26-4a39-8b81-697e4add69b7"/>
+				<reportElement x="33" y="39" width="141" height="20" uuid="9b0d22fe-fa26-4a39-8b81-697e4add69b7"/>
 				<textElement textAlignment="Center">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{cargo_persona_uno}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="224" y="65" width="145" height="1" uuid="791339e4-3cfb-46da-9eed-7a0240fd4875"/>
+				<reportElement x="29" y="112" width="145" height="1" uuid="791339e4-3cfb-46da-9eed-7a0240fd4875"/>
 			</line>
-			<textField>
-				<reportElement x="224" y="68" width="145" height="20" uuid="817d3cd3-b624-4b56-8b1c-8b546b7c8b64"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="29" y="115" width="145" height="20" uuid="817d3cd3-b624-4b56-8b1c-8b546b7c8b64"/>
 				<textElement textAlignment="Center">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{persona_dos}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="228" y="88" width="144" height="20" uuid="27a86572-fbe6-461a-b424-cbb101ad6797"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="33" y="135" width="144" height="20" uuid="27a86572-fbe6-461a-b424-cbb101ad6797"/>
 				<textElement textAlignment="Center">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{cargo_persona_dos}]]></textFieldExpression>
 			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="237" y="19" width="122" height="20" uuid="850295d7-c8d3-476d-bb4f-96c89796b36f"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{persona_tres}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="229" y="39" width="130" height="20" uuid="e9b528fb-a9b4-4041-8839-77b833237bca"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cargo_persona_tres}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="227" y="17" width="145" height="1" uuid="bc5878f7-f42a-48ba-a124-a10bd61f50f5"/>
+			</line>
 		</band>
 	</columnFooter>
 	<pageFooter>

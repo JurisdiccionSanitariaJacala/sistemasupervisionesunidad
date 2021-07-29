@@ -10,6 +10,22 @@ import classes.JGlobalVariables;
 import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
+import classes.JDBConnection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -39,7 +55,6 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTHistorialSup = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jTxtCLUES = new javax.swing.JTextField();
@@ -63,8 +78,6 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jTxtPersonaCuatro = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -103,9 +116,11 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTHistorialSup);
 
         jButton1.setText("Ver reporte");
-
-        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel1.setText("//Se tiene que generar el reporte con los datos de la DB");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Cargar datos");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -203,10 +218,6 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
 
         jLabel13.setText("Persona 4:");
 
-        jCheckBox1.setText("Modificar");
-
-        jButton3.setText("Actualizar datos");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -216,8 +227,7 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,43 +246,35 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
                                     .addComponent(jTxtUnidad, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTxtCLUES, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTxtDepto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
+                                .addGap(62, 62, 62)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel7)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTxtPersonaUno))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel8)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTxtPersonaDos))))
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTxtPersonaUno, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(12, 12, 12)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel13)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTxtPersonaCuatro))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel12)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTxtPersonaCinco))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel11)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTxtPersonaSeis))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel9)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTxtPersonaTres)))))
-                                .addGap(191, 191, 191))
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTxtPersonaDos))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel13)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTxtPersonaCuatro))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel12)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTxtPersonaCinco))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel11)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTxtPersonaSeis))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTxtPersonaTres)))
+                                .addGap(141, 141, 141))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 222, Short.MAX_VALUE)
-                                .addComponent(jCheckBox1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTxtID, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -291,40 +293,41 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jLabel1)
                     .addComponent(jTxtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
-                    .addComponent(jCheckBox1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTxtCLUES, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTxtPersonaUno, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton2)
-                        .addComponent(jLabel2)))
+                    .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTxtCLUES, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jButton2)
+                                .addComponent(jLabel2)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTxtUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jTxtDepto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6)
+                            .addComponent(jTxtFechaSuper, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTxtPersonaUno, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTxtPersonaDos, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jTxtDepto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTxtPersonaTres, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9)))
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel6)
-                        .addComponent(jTxtFechaSuper, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTxtPersonaCuatro, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13))
@@ -350,12 +353,7 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
         JDBConnection.selectQuery(sql, jTHistorialSup);
         JDBConnection.closeConnection();
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    
-    private void cargarDatosTabla(){
-        
-    }
-    
+   
     
     
     private void jTxtCLUESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtCLUESActionPerformed
@@ -373,18 +371,31 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
     private void jTHistorialSupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTHistorialSupMouseClicked
         // TODO add your handling code here:
         //clickTabla(this.jTHistorialSup);
+        String idDep;
         JGlobalVariables.setClues(jTHistorialSup.getValueAt(jTHistorialSup.getSelectedRow(), 1).toString());
         JGlobalVariables.setNombreDepartementoSup(jTHistorialSup.getValueAt(jTHistorialSup.getSelectedRow(), 3).toString());
         JGlobalVariables.setFechaSupervision(jTHistorialSup.getValueAt(jTHistorialSup.getSelectedRow(), 10).toString());
         JGlobalVariables.setNombreUnidad(jTHistorialSup.getValueAt(jTHistorialSup.getSelectedRow(), 2).toString());
-        jTHistorialSup.getValueAt(jTHistorialSup.getSelectedRow(), 0);
-        
-                //JGlobalVariables.setIdDepartamento(jTHistorialSup.getValueAt(jTHistorialSup.getSelectedRow(),0));
+        JGlobalVariables.setPersonaUno(jTHistorialSup.getValueAt(jTHistorialSup.getSelectedRow(),4).toString());
+        JGlobalVariables.setPersonaDos(jTHistorialSup.getValueAt(jTHistorialSup.getSelectedRow(),5).toString());
+        JGlobalVariables.setPersonaTres(jTHistorialSup.getValueAt(jTHistorialSup.getSelectedRow(),6).toString());
+        JGlobalVariables.setPersonaCuatro(jTHistorialSup.getValueAt(jTHistorialSup.getSelectedRow(),7).toString());
+        JGlobalVariables.setPersonaCinco(jTHistorialSup.getValueAt(jTHistorialSup.getSelectedRow(),8).toString());
+        JGlobalVariables.setPersonaSeis(jTHistorialSup.getValueAt(jTHistorialSup.getSelectedRow(),9).toString());
+        idDep = String.valueOf(jTHistorialSup.getValueAt(jTHistorialSup.getSelectedRow(), 0));        
+        JGlobalVariables.setIdDepartamento(Integer.valueOf(idDep));               
         
         jTxtCLUES.setText(JGlobalVariables.getClues());
         jTxtDepto.setText(JGlobalVariables.getNombreDepartementoSup());
         jTxtFechaSuper.setText(JGlobalVariables.getFechaSupervision());
         jTxtUnidad.setText(JGlobalVariables.getNombreUnidad());
+        jTxtPersonaUno.setText(JGlobalVariables.getPersonaUno());
+        jTxtPersonaDos.setText(JGlobalVariables.getPersonaDos());
+        jTxtPersonaTres.setText(JGlobalVariables.getPersonaTres());
+        jTxtPersonaCuatro.setText(JGlobalVariables.getPersonaCuatro());
+        jTxtPersonaCinco.setText(JGlobalVariables.getPersonaCinco());
+        jTxtPersonaSeis.setText(JGlobalVariables.getPersonaSeis());
+        jTxtID.setText(idDep);
     }//GEN-LAST:event_jTHistorialSupMouseClicked
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -420,15 +431,31 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtPersonaCuatroActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        recuperarDatosDB();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param evt
      * @param args the command line arguments
      */
-    
+    /**
+     * Metodo para registrar un evento en el elemento <code>JTable</code>
+     * @param evt evento
+     */
     private void jTHistorialSupActionPerformed(java.awt.event.ActionEvent evt) {
         clickTabla(jTHistorialSup);
     }
     
+    /**
+     * Se recuperan los datos del elemento <code>JTable</code> seleccionado, para que al darle click se registren en donde se tengan que registrar...
+     * revisar metodo JFrmHistorialSupervisiones.jTHistorialSupMouseClicked, ya que este metodo no recupera bien al utilizar el teclado.
+     *      
+     * @param tabla Elemento <code>JTable</code> 
+     * 
+     * @see jTHistorialSupMouseClicked
+     */    
     public void clickTabla(JTable tabla) {
 
         tabla.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
@@ -442,6 +469,159 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
         id = tabla.getValueAt(1, tabla.getSelectedColumn()).toString();
         jTxtCLUES.setText(id);
     }
+    
+    /**
+     * Metodo para recuperar informacion de la base de datos y posteriormente almacenarla en variables globales
+     */    
+    public void recuperarDatosDB(){
+        try{
+            JDBConnection.openConnection();        
+            String qr = "SELECT desc_activ, num_personas, cargo_persona_uno, cargo_persona_dos, cargo_persona_tres, cargo_persona_cuatro, cargo_persona_cinco, cargo_persona_seis FROM supervision INNER JOIN departamento on supervision.id_departamento = departamento.iddepartamento AND supervision.idsupervision="+jTxtID.getText()+";";
+            ResultSet rsQuery = JDBConnection.selectAll(qr);        
+            JGlobalVariables.setNumeroPersonasLetra(rsQuery.getString("num_personas"));
+            JGlobalVariables.setCargoPersonaUno(rsQuery.getString("cargo_persona_uno"));
+            JGlobalVariables.setCargoPersonaDos(rsQuery.getString("cargo_persona_dos"));
+            JGlobalVariables.setCargoPersonaTres(rsQuery.getString("cargo_persona_tres"));
+            JGlobalVariables.setCargoPersonaCuatro(rsQuery.getString("cargo_persona_cuatro"));
+            JGlobalVariables.setCargoPersonaCinco(rsQuery.getString("cargo_persona_cinco"));
+            JGlobalVariables.setCargoPersonaSeis(rsQuery.getString("cargo_persona_seis"));
+            JGlobalVariables.setDescripcionActividades(rsQuery.getString("desc_activ"));                                    
+            //llamar al metodo para generar reportes de acuerdo al numero de personas
+            generarReporte(JGlobalVariables.getNumeroPersonasLetra());
+            JDBConnection.closeConnection();
+        } catch(SQLException e){
+            System.out.println("error SQL: "+e.getMessage());
+        }
+    }
+    
+    
+    /**
+     * Metodo para generar reportes de acuerdo al numero de personas...
+     * @param numPersonas Numero de personas, tipo <code>String</code>
+     */
+    public void generarReporte(String numPersonas){
+        String rutaJRXML = JGlobalVariables.getRutaJRXml();
+        String rutaJasperFile = JGlobalVariables.getRutaJasperFile();
+        final String rutaGuardarReporte = JGlobalVariables.getRutaGuardadoReporte();
+        
+        try{
+            if(numPersonas.equals("1 PERSONA")){
+                rutaJRXML+="RSupervisionAIUnaPersona.jrxml";
+                rutaJasperFile+="RSupervisionAIUnaPersona.jasper";
+                JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
+                Map<String, Object> parameters = new HashMap<>();
+                parameters.put("clues_unidad", JGlobalVariables.getClues());
+                parameters.put("descripcion_actividad", JGlobalVariables.getDescripcionActividades());                
+                parameters.put("depto_supervisor", JGlobalVariables.getNombreDepartementoSup());
+                parameters.put("fecha_supervision",JGlobalVariables.getFechaSupervision());
+                parameters.put("persona_uno",JGlobalVariables.getPersonaUno());
+                parameters.put("cargo_persona_uno",JGlobalVariables.getCargoPersonaUno());
+                JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters,new JREmptyDataSource());
+                JasperExportManager.exportReportToPdfFile(impresion, rutaGuardarReporte);        
+                JasperViewer.viewReport(impresion, false);
+                parameters = null;                
+            } else if (numPersonas.equals("2 PERSONAS")){
+                rutaJRXML+="RSupervisionAIDosPersonas.jrxml";
+                rutaJasperFile+="RSupervisionAIDosPersonas.jasper";
+                JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
+                Map<String, Object> parameters = new HashMap<>();
+                parameters.put("clues_unidad", JGlobalVariables.getClues());
+                parameters.put("descripcion_actividad", JGlobalVariables.getDescripcionActividades());                
+                parameters.put("depto_supervisor", JGlobalVariables.getNombreDepartementoSup());
+                parameters.put("fecha_supervision",JGlobalVariables.getFechaSupervision());
+                parameters.put("persona_uno",JGlobalVariables.getPersonaUno());
+                parameters.put("cargo_persona_uno",JGlobalVariables.getCargoPersonaUno());
+                parameters.put("persona_dos",JGlobalVariables.getPersonaDos());
+                parameters.put("cargo_persona_dos",JGlobalVariables.getCargoPersonaDos());                
+                JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters,new JREmptyDataSource());
+                JasperExportManager.exportReportToPdfFile(impresion, rutaGuardarReporte);        
+                JasperViewer.viewReport(impresion, false);
+                parameters = null;                                
+            } else if (numPersonas.equals("3 PERSONAS")){
+                rutaJRXML+="RSupervisionAITresPersonas.jrxml";
+                rutaJasperFile+="RSupervisionAITresPersonas.jasper";
+                JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
+                Map<String, Object> parameters = new HashMap<>();
+                parameters.put("clues_unidad", JGlobalVariables.getClues());
+                parameters.put("descripcion_actividad", JGlobalVariables.getDescripcionActividades());                
+                parameters.put("depto_supervisor", JGlobalVariables.getNombreDepartementoSup());
+                parameters.put("fecha_supervision",JGlobalVariables.getFechaSupervision());
+                parameters.put("persona_uno",JGlobalVariables.getPersonaUno());
+                parameters.put("cargo_persona_uno",JGlobalVariables.getCargoPersonaUno());
+                parameters.put("persona_dos",JGlobalVariables.getPersonaDos());
+                parameters.put("cargo_persona_dos",JGlobalVariables.getCargoPersonaDos());                
+                parameters.put("persona_tres",JGlobalVariables.getPersonaTres());
+                parameters.put("cargo_persona_tres",JGlobalVariables.getCargoPersonaTres());                                
+                JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters,new JREmptyDataSource());
+                JasperExportManager.exportReportToPdfFile(impresion, rutaGuardarReporte);        
+                JasperViewer.viewReport(impresion, false);
+                parameters = null;                                                
+            } else if (numPersonas.equals("4 PERSONAS")){
+                rutaJRXML+="RSupervisionAICuatroPersonas.jrxml";
+                rutaJasperFile+="RSupervisionAICuatroPersonas.jasper";
+                JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
+                Map<String, Object> parameters = new HashMap<>();
+                parameters.put("clues_unidad", JGlobalVariables.getClues());
+                parameters.put("descripcion_actividad", JGlobalVariables.getDescripcionActividades());                
+                parameters.put("depto_supervisor", JGlobalVariables.getNombreDepartementoSup());
+                parameters.put("fecha_supervision",JGlobalVariables.getFechaSupervision());
+                parameters.put("persona_uno",JGlobalVariables.getPersonaUno());
+                parameters.put("cargo_persona_uno",JGlobalVariables.getCargoPersonaUno());
+                parameters.put("persona_dos",JGlobalVariables.getPersonaDos());
+                parameters.put("cargo_persona_dos",JGlobalVariables.getCargoPersonaDos());                
+                parameters.put("persona_tres",JGlobalVariables.getPersonaTres());
+                parameters.put("cargo_persona_tres",JGlobalVariables.getCargoPersonaTres());                
+                parameters.put("persona_cuatro",JGlobalVariables.getPersonaCuatro());
+                parameters.put("cargo_persona_cuatro",JGlobalVariables.getCargoPersonaCuatro());                                
+                JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters,new JREmptyDataSource());
+                JasperExportManager.exportReportToPdfFile(impresion, rutaGuardarReporte);        
+                JasperViewer.viewReport(impresion, false);
+                parameters = null;                                                
+            } else if (numPersonas.equals("5 PERSONAS")){
+                rutaJRXML+="RSupervisionAICincoPersonas.jrxml";
+                rutaJasperFile+="RSupervisionAICincoPersonas.jasper";
+                JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
+                Map<String, Object> parameters = new HashMap<>();
+                parameters.put("clues_unidad", JGlobalVariables.getClues());
+                parameters.put("descripcion_actividad", JGlobalVariables.getDescripcionActividades());                
+                parameters.put("depto_supervisor", JGlobalVariables.getNombreDepartementoSup());
+                parameters.put("fecha_supervision",JGlobalVariables.getFechaSupervision());
+                parameters.put("persona_uno",JGlobalVariables.getPersonaUno());
+                parameters.put("cargo_persona_uno",JGlobalVariables.getCargoPersonaUno());
+                parameters.put("persona_dos",JGlobalVariables.getPersonaDos());
+                parameters.put("cargo_persona_dos",JGlobalVariables.getCargoPersonaDos());                
+                parameters.put("persona_tres",JGlobalVariables.getPersonaTres());
+                parameters.put("cargo_persona_tres",JGlobalVariables.getCargoPersonaTres());                
+                parameters.put("persona_cuatro",JGlobalVariables.getPersonaCuatro());
+                parameters.put("cargo_persona_cuatro",JGlobalVariables.getCargoPersonaCuatro());                                
+                parameters.put("persona_cinco",JGlobalVariables.getPersonaCinco());
+                parameters.put("cargo_persona_cinco",JGlobalVariables.getCargoPersonaCinco());                                                
+            } else if (numPersonas.equals("6 PERSONAS")){
+                rutaJRXML+="RSupervisionAISeisPersonas.jrxml";
+                rutaJasperFile+="RSupervisionAISeisPersonas.jasper";
+                JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
+                Map<String, Object> parameters = new HashMap<>();
+                parameters.put("clues_unidad", JGlobalVariables.getClues());
+                parameters.put("descripcion_actividad", JGlobalVariables.getDescripcionActividades());                
+                parameters.put("depto_supervisor", JGlobalVariables.getNombreDepartementoSup());
+                parameters.put("fecha_supervision",JGlobalVariables.getFechaSupervision());
+                parameters.put("persona_uno",JGlobalVariables.getPersonaUno());
+                parameters.put("cargo_persona_uno",JGlobalVariables.getCargoPersonaUno());
+                parameters.put("persona_dos",JGlobalVariables.getPersonaDos());
+                parameters.put("cargo_persona_dos",JGlobalVariables.getCargoPersonaDos());                
+                parameters.put("persona_tres",JGlobalVariables.getPersonaTres());
+                parameters.put("cargo_persona_tres",JGlobalVariables.getCargoPersonaTres());                
+                parameters.put("persona_cuatro",JGlobalVariables.getPersonaCuatro());
+                parameters.put("cargo_persona_cuatro",JGlobalVariables.getCargoPersonaCuatro());                                
+                parameters.put("persona_cinco",JGlobalVariables.getPersonaCinco());
+                parameters.put("cargo_persona_cinco",JGlobalVariables.getCargoPersonaCinco());                                                                     
+                parameters.put("persona_seis",JGlobalVariables.getPersonaCinco());
+                parameters.put("cargo_persona_seis",JGlobalVariables.getCargoPersonaCinco());
+            }            
+        }catch(Exception e) {
+        }
+    }
+    
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -478,9 +658,6 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

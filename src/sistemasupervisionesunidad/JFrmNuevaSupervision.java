@@ -28,7 +28,7 @@ import net.sf.jasperreports.view.JasperViewer;
 
 
 /**
- *
+ * Clase principal para realizar una Nueva Supervisión.
  * @author INVENTARIOS
  */
 public class JFrmNuevaSupervision extends javax.swing.JFrame {
@@ -45,6 +45,12 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
         txtPersona4.setEnabled(false);
         txtPersona5.setEnabled(false);
         txtPersona6.setEnabled(false);
+        jTxtCargoPersona1.setEnabled(true);
+        jTxtCargoPersona2.setEnabled(false);
+        jTxtCargoPersona3.setEnabled(false);
+        jTxtCargoPersona4.setEnabled(false);
+        jTxtCargoPersona5.setEnabled(false);
+        jTxtCargoPersona6.setEnabled(false);
         fillComboBoxWithNoValue(5);
         //abrir coneccion a SQLite
     }
@@ -378,10 +384,9 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane3)
-                        .addContainerGap())))
+                    .addComponent(jScrollPane3)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -415,7 +420,14 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
         try {
             idDepartamento = cbDepartamento.getSelectedIndex()+1;
             JDBConnection.openConnection();
-            JDBConnection.insertQuery(fechaDMY, txtCLUES.getText(),txtActividadesSup.getText(),txtUnidad.getText(),txtMotivoSupervision.getText(), String.valueOf(cbNumPersonas.getSelectedItem()),txtPersona1.getText(),txtPersona2.getText(),txtPersona3.getText(),txtPersona4.getText(),txtPersona5.getText(),txtPersona6.getText(),idDepartamento);
+            JDBConnection.insertQuery(fechaDMY, txtCLUES.getText(),txtActividadesSup.getText(),
+                    txtUnidad.getText(),txtMotivoSupervision.getText(), 
+                    String.valueOf(cbNumPersonas.getSelectedItem()),txtPersona1.getText(),
+                    txtPersona2.getText(),txtPersona3.getText(),txtPersona4.getText(),
+                    txtPersona5.getText(),txtPersona6.getText(),idDepartamento,
+                    jTxtCargoPersona1.getText(),jTxtCargoPersona2.getText(),
+                    jTxtCargoPersona3.getText(),jTxtCargoPersona4.getText(),
+                    jTxtCargoPersona5.getText(), jTxtCargoPersona6.getText());
             generarReporte(String.valueOf(cbNumPersonas.getSelectedItem()).substring(0, 1));
             JDBConnection.closeConnection();
         } catch(Exception e) {
@@ -546,6 +558,11 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
         //cambiar el formato de fecha a DD/mm/YYYY
     }//GEN-LAST:event_dpFechaSupervisionActionPerformed
 
+    
+    /**
+     * <code>fillComboBoxWithNoValue</code> se utiliza para rellenar elementos <code>TextField</code> del GUI.
+     * @param cantidad de acuerdo a la cantidad, se puede "limpiar" los <code>TextField</code>. Rango: 1 a 6.
+     */
     private void fillComboBoxWithNoValue(int cantidad){
         switch (cantidad) {
             case 6:
@@ -555,6 +572,12 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
                 txtPersona4.setText(String.valueOf(""));
                 txtPersona5.setText(String.valueOf(""));
                 txtPersona6.setText(String.valueOf(""));        
+                jTxtCargoPersona1.setText(String.valueOf(""));
+                jTxtCargoPersona2.setText(String.valueOf(""));
+                jTxtCargoPersona3.setText(String.valueOf(""));
+                jTxtCargoPersona4.setText(String.valueOf(""));
+                jTxtCargoPersona5.setText(String.valueOf(""));
+                jTxtCargoPersona6.setText(String.valueOf(""));
                 break;
             case 5: //cinco personas
                 txtPersona2.setText("--");
@@ -574,6 +597,7 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
                 txtPersona4.setText("--");
                 txtPersona5.setText("--");
                 txtPersona6.setText("--");
+                jTxtCargoPersona2.setText("");
                 jTxtCargoPersona3.setText("--");
                 jTxtCargoPersona4.setText("--");
                 jTxtCargoPersona5.setText("--");
@@ -585,6 +609,8 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
                 txtPersona4.setText("--");
                 txtPersona5.setText("--");
                 txtPersona6.setText("--"); 
+                jTxtCargoPersona2.setText("");
+                jTxtCargoPersona3.setText("");
                 jTxtCargoPersona4.setText("--");
                 jTxtCargoPersona5.setText("--");
                 jTxtCargoPersona6.setText("--");                 
@@ -595,6 +621,9 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
                 txtPersona4.setText("");                
                 txtPersona5.setText("--");
                 txtPersona6.setText("--");     
+                jTxtCargoPersona2.setText("");
+                jTxtCargoPersona3.setText("");
+                jTxtCargoPersona4.setText("");
                 jTxtCargoPersona5.setText("--");
                 jTxtCargoPersona6.setText("--");                 
                 break;
@@ -604,15 +633,21 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
                 txtPersona4.setText("");                
                 txtPersona5.setText("");                
                 txtPersona6.setText("--");      
+                jTxtCargoPersona2.setText("");
+                jTxtCargoPersona3.setText("");
+                jTxtCargoPersona4.setText("");
+                jTxtCargoPersona5.setText("");
                 jTxtCargoPersona6.setText("--");                 
                 break;
             default: break;
         }
     }
-    
+    /**
+     * Metodo no servible, utilizar <code>generarReporte(String numeroDePersonas)</code> en su lugar.
+     */
     private void generarReporte(){
         try {
-        String rutaGuardarReporte = "C:\\supervisionesssh\\repo\\reportePrueba.pdf";
+        String rutaGuardarReporte = JGlobalVariables.getRutaGuardadoReporte();
         String rutaPatron = "C:\\Users\\usuario\\Downloads\\sistemasupervisionesunidad-final\\sistemasupervisionesunidad-final\\src\\sistemasupervisionesunidad\\reportes\\RSupervisionAIUnaPersona.jrxml"; //Jrxml
         //String rutaPatron = "C:/supervisionesssh/repo/RSupervisionAIUnaPersona.jrxml";
         String rutaJasperFile = "C:\\Users\\usuario\\Downloads\\sistemasupervisionesunidad-final\\sistemasupervisionesunidad-final\\src\\sistemasupervisionesunidad\\reportes\\RSupervisionAIUnaPersona.jasper";
@@ -635,17 +670,25 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
            
    }    
     
+    
+    /**
+     * Método para generar reporte de acuerdo al número de personas ingresadas.
+     * @param numeroDePersonas Número de personas, se obtiene en <code>String</code>, después se procesa
+     * para cambiarlo a int y utilizarlo en un <code>switch</code>.
+     */
     private void generarReporte(String numeroDePersonas){
         Integer.parseInt(String.valueOf(numeroDePersonas));
-        final String rutaGuardarReporte = "C:\\supervisionesssh\\repo\\reportePrueba.pdf";
-        String rutaJRXML = "";
-        String rutaJasperFile = "";
+        String rutaGuardarReporte = JGlobalVariables.getRutaGuardadoReporte();
+        //String rutaJRXML = "C:\\supervisionesssh\\repo\\jsp\\";
+        //String rutaJasperFile = "C:\\supervisionesssh\\repo\\jsp\\";
+        String rutaJRXML = JGlobalVariables.getRutaJRXml();
+        String rutaJasperFile = JGlobalVariables.getRutaJasperFile();
         
         try{
             switch(Integer.parseInt(String.valueOf(numeroDePersonas))){
             case 1:
-                rutaJRXML = "C:\\Users\\INVENTARIOS\\Downloads\\sistemasupervisionesunidad-final\\sistemasupervisionesunidad-final\\src\\sistemasupervisionesunidad\\reportes\\RSupervisionAIUnaPersona.jrxml";
-                rutaJasperFile = "C:\\Users\\INVENTARIOS\\Downloads\\sistemasupervisionesunidad-final\\sistemasupervisionesunidad-final\\src\\sistemasupervisionesunidad\\reportes\\RSupervisionAIUnaPersona.jasper";
+                rutaJRXML+=JGlobalVariables.getReporteJRXMLPersona(0);
+                rutaJasperFile+=JGlobalVariables.getJasperReportFile(0);
                 JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
                 Map<String, Object> parameters = new HashMap<>();
                 parameters.put("clues_unidad", this.txtCLUES.getText());
@@ -660,8 +703,8 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
                 parameters = null;
                 break;
             case 2:
-                rutaJRXML = "C:\\Users\\INVENTARIOS\\Downloads\\sistemasupervisionesunidad-final\\sistemasupervisionesunidad-final\\src\\sistemasupervisionesunidad\\reportes\\RSupervisionAIDosPersonas.jrxml";
-                rutaJasperFile = "C:\\Users\\INVENTARIOS\\Downloads\\sistemasupervisionesunidad-final\\sistemasupervisionesunidad-final\\src\\sistemasupervisionesunidad\\reportes\\RSupervisionAIDosPersona.jasper";
+                rutaJRXML+=JGlobalVariables.getReporteJRXMLPersona(1);
+                rutaJasperFile+=JGlobalVariables.getJasperReportFile(1);
                 JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
                 Map<String, Object> parameters2 = new HashMap<>();
                 parameters2.put("clues_unidad", this.txtCLUES.getText());
@@ -678,34 +721,96 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
                 parameters2 = null;
                 break;
             case 3:
-                rutaJRXML = "C:\\Users\\usuario\\Downloads\\sistemasupervisionesunidad-final\\sistemasupervisionesunidad-final\\src\\sistemasupervisionesunidad\\reportes\\RSupervisionAITresPersonas.jrxml";
-                rutaJasperFile = "C:\\Users\\usuario\\Downloads\\sistemasupervisionesunidad-final\\sistemasupervisionesunidad-final\\src\\sistemasupervisionesunidad\\reportes\\RSupervisionAITresPersona.jasper";
+                rutaJRXML+=JGlobalVariables.getReporteJRXMLPersona(2);
+                rutaJasperFile+=JGlobalVariables.getJasperReportFile(2);
                 JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
                 Map<String, Object> parameters3 = new HashMap<>();
                 parameters3.put("clues_unidad", this.txtCLUES.getText());
                 parameters3.put("descripcion_actividad", this.txtActividadesSup.getText());                
                 parameters3.put("depto_supervisor", String.valueOf(cbDepartamento.getSelectedItem()));
                 parameters3.put("fecha_supervision",JGlobalVariables.getFechaSupervision());
+                parameters3.put("persona_uno",txtPersona1.getText());
+                parameters3.put("cargo_persona_uno",jTxtCargoPersona1.getText());
+                parameters3.put("persona_dos",txtPersona2.getText());
+                parameters3.put("cargo_persona_dos",jTxtCargoPersona2.getText());                
+                parameters3.put("persona_tres",txtPersona3.getText());
+                parameters3.put("cargo_persona_tres",jTxtCargoPersona3.getText());                                
                 JasperPrint impresion3 = JasperFillManager.fillReport(rutaJasperFile, parameters3,new JREmptyDataSource());
                 JasperExportManager.exportReportToPdfFile(impresion3, rutaGuardarReporte);        
                 JasperViewer.viewReport(impresion3, false);
                 parameters3 = null;                
                 break;
             case 4:
-                rutaJRXML = "C:\\Users\\usuario\\Downloads\\sistemasupervisionesunidad-final\\sistemasupervisionesunidad-final\\src\\sistemasupervisionesunidad\\reportes\\RSupervisionAICuatroPersonas.jrxml";
-                rutaJasperFile = "C:\\Users\\usuario\\Downloads\\sistemasupervisionesunidad-final\\sistemasupervisionesunidad-final\\src\\sistemasupervisionesunidad\\reportes\\RSupervisionAICuatroPersona.jasper";
+                rutaJRXML+=JGlobalVariables.getReporteJRXMLPersona(3);
+                rutaJasperFile+=JGlobalVariables.getJasperReportFile(3);
                 JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
                 Map<String, Object> parameters4 = new HashMap<>();
                 parameters4.put("clues_unidad", this.txtCLUES.getText());
                 parameters4.put("descripcion_actividad", this.txtActividadesSup.getText());                
                 parameters4.put("depto_supervisor", String.valueOf(cbDepartamento.getSelectedItem()));
                 parameters4.put("fecha_supervision",JGlobalVariables.getFechaSupervision());
+                parameters4.put("persona_uno",txtPersona1.getText());
+                parameters4.put("cargo_persona_uno",jTxtCargoPersona1.getText());
+                parameters4.put("persona_dos",txtPersona2.getText());
+                parameters4.put("cargo_persona_dos",jTxtCargoPersona2.getText());                
+                parameters4.put("persona_tres",txtPersona3.getText());
+                parameters4.put("cargo_persona_tres",jTxtCargoPersona3.getText());                                                
+                parameters4.put("persona_cuatro",txtPersona4.getText());
+                parameters4.put("cargo_persona_cuatro",jTxtCargoPersona4.getText());
                 JasperPrint impresion4 = JasperFillManager.fillReport(rutaJasperFile, parameters4,new JREmptyDataSource());
                 JasperExportManager.exportReportToPdfFile(impresion4, rutaGuardarReporte);        
                 JasperViewer.viewReport(impresion4, false);
                 parameters4 = null;                     
                 break;
             case 5:
+                rutaJRXML+=JGlobalVariables.getReporteJRXMLPersona(4);
+                rutaJasperFile+=JGlobalVariables.getJasperReportFile(4);
+                JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
+                Map<String, Object> parameters5 = new HashMap<>();
+                parameters5.put("clues_unidad", this.txtCLUES.getText());
+                parameters5.put("descripcion_actividad", this.txtActividadesSup.getText());                
+                parameters5.put("depto_supervisor", String.valueOf(cbDepartamento.getSelectedItem()));
+                parameters5.put("fecha_supervision",JGlobalVariables.getFechaSupervision());
+                parameters5.put("persona_uno",txtPersona1.getText());
+                parameters5.put("cargo_persona_uno",jTxtCargoPersona1.getText());
+                parameters5.put("persona_dos",txtPersona2.getText());
+                parameters5.put("cargo_persona_dos",jTxtCargoPersona2.getText());                
+                parameters5.put("persona_tres",txtPersona3.getText());
+                parameters5.put("cargo_persona_tres",jTxtCargoPersona3.getText());                                                
+                parameters5.put("persona_cuatro",txtPersona4.getText());
+                parameters5.put("cargo_persona_cuatro",jTxtCargoPersona4.getText());                
+                parameters5.put("persona_cinco",txtPersona5.getText());
+                parameters5.put("cargo_persona_cinco",jTxtCargoPersona5.getText());                                
+                JasperPrint impresion5 = JasperFillManager.fillReport(rutaJasperFile, parameters5,new JREmptyDataSource());
+                JasperExportManager.exportReportToPdfFile(impresion5, rutaGuardarReporte);        
+                JasperViewer.viewReport(impresion5, false);
+                parameters5 = null;                  
+                break;
+            case 6:
+                rutaJRXML+=JGlobalVariables.getReporteJRXMLPersona(5);
+                rutaJasperFile+=JGlobalVariables.getJasperReportFile(5);
+                JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
+                Map<String, Object> parameters6 = new HashMap<>();
+                parameters6.put("clues_unidad", this.txtCLUES.getText());
+                parameters6.put("descripcion_actividad", this.txtActividadesSup.getText());                
+                parameters6.put("depto_supervisor", String.valueOf(cbDepartamento.getSelectedItem()));
+                parameters6.put("fecha_supervision",JGlobalVariables.getFechaSupervision());
+                parameters6.put("persona_uno",txtPersona1.getText());
+                parameters6.put("cargo_persona_uno",jTxtCargoPersona1.getText());
+                parameters6.put("persona_dos",txtPersona2.getText());
+                parameters6.put("cargo_persona_dos",jTxtCargoPersona2.getText());                
+                parameters6.put("persona_tres",txtPersona3.getText());
+                parameters6.put("cargo_persona_tres",jTxtCargoPersona3.getText());                                                
+                parameters6.put("persona_cuatro",txtPersona4.getText());
+                parameters6.put("cargo_persona_cuatro",jTxtCargoPersona4.getText());                
+                parameters6.put("persona_cinco",txtPersona5.getText());
+                parameters6.put("cargo_persona_cinco",jTxtCargoPersona5.getText());  
+                parameters6.put("persona_seis",txtPersona6.getText());
+                parameters6.put("cargo_persona_seis",jTxtCargoPersona6.getText());                  
+                JasperPrint impresion6 = JasperFillManager.fillReport(rutaJasperFile, parameters6,new JREmptyDataSource());
+                JasperExportManager.exportReportToPdfFile(impresion6, rutaGuardarReporte);        
+                JasperViewer.viewReport(impresion6, false);
+                parameters6 = null;                  
                 break;
             default: break;         
             }

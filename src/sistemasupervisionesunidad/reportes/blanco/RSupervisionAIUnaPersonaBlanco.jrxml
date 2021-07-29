@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a8e648c0-0abd-47c5-84ef-a0cf80b35602">
 	<property name="ireport.zoom" value="1.3310000000000106"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="602"/>
 	<parameter name="clues_unidad" class="java.lang.String"/>
 	<parameter name="descripcion_actividad" class="java.lang.String"/>
 	<parameter name="depto_supervisor" class="java.lang.String"/>
@@ -24,11 +24,6 @@
 				</textElement>
 				<text><![CDATA[NOTA DE SUPERVISIÓN]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="7" y="60" width="589" height="20" uuid="751c91e9-1898-4db5-8f9c-45fadef7e36f"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$P{depto_supervisor}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="3" y="5" width="589" height="20" uuid="bd98791b-5dea-4291-8c85-65014d3a7c94"/>
 				<textElement textAlignment="Center">
@@ -43,14 +38,6 @@
 				</textElement>
 				<text><![CDATA[JURISDICCIÓN NO. 16 JACALA]]></text>
 			</staticText>
-			<image>
-				<reportElement x="20" y="10" width="100" height="61" uuid="c754e858-623d-475c-869f-fa26babef7ff"/>
-				<imageExpression><![CDATA["C:\\Users\\usuario\\Documents\\Informatica\\Desarrollo\\Proyectos\\sistemasupervisionesunidad\\src\\resources\\pictures\\SSH-100px.png"]]></imageExpression>
-			</image>
-			<image>
-				<reportElement x="491" y="2" width="89" height="80" uuid="dd6ef276-00ae-47fa-8cba-3d57af14e35c"/>
-				<imageExpression><![CDATA["C:\\Users\\usuario\\Documents\\Informatica\\Desarrollo\\Proyectos\\sistemasupervisionesunidad\\src\\resources\\pictures\\Escudo-100px.png"]]></imageExpression>
-			</image>
 		</band>
 	</pageHeader>
 	<columnHeader>
@@ -199,10 +186,6 @@
 				</textElement>
 				<text><![CDATA[REPORTE DE ACTIVIDADES]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="60" y="131" width="86" height="20" uuid="0f563bac-21be-4d80-a725-eb31d57654b5"/>
-				<textFieldExpression><![CDATA[$P{clues_unidad}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="9" y="131" width="49" height="20" uuid="bd2bc10c-1043-491f-ab36-cb8d52912fe4"/>
 				<textElement>
@@ -217,29 +200,23 @@
 				</textElement>
 				<text><![CDATA[FECHA DE SUPERVISION:]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="447" y="131" width="120" height="20" uuid="8a6086a8-6be9-45e6-a342-bee7070c9516"/>
-				<textFieldExpression><![CDATA[$P{fecha_supervision}]]></textFieldExpression>
-			</textField>
 			<line>
 				<reportElement x="10" y="154" width="575" height="1" uuid="0d1d35d6-b7a7-48f8-8632-d405b9f5fdf3"/>
 				<graphicElement>
 					<pen lineStyle="Dotted" lineColor="#999999"/>
 				</graphicElement>
 			</line>
+			<line>
+				<reportElement x="60" y="144" width="202" height="1" uuid="c1f8935e-d839-497f-bf07-863b350b0677"/>
+			</line>
+			<line>
+				<reportElement x="449" y="144" width="134" height="1" uuid="3340cb3a-18b7-4c77-8c58-8d5ae5d3ce0c"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
 		<band splitType="Stretch"/>
-		<band height="415">
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" mode="Opaque" x="12" y="11" width="568" height="21" backcolor="#F5F5F5" uuid="0972d3f4-eb4f-432e-a2a9-42449c4121fd"/>
-				<textElement textAlignment="Justified">
-					<font size="8" isItalic="true" isUnderline="false"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{descripcion_actividad}]]></textFieldExpression>
-			</textField>
-		</band>
+		<band height="415"/>
 	</detail>
 	<columnFooter>
 		<band height="119" splitType="Stretch">
@@ -263,20 +240,14 @@ Vo.Bo]]></text>
 					<pen lineStyle="Dotted" lineColor="#999999"/>
 				</graphicElement>
 			</line>
-			<textField isStretchWithOverflow="true">
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="12" y="67" width="188" height="20" uuid="b7539608-707a-4333-af09-c2baaae4c7b2"/>
+			<staticText>
+				<reportElement x="37" y="68" width="144" height="47" uuid="eedb6de2-13b8-4b1e-94db-a770925e6562"/>
 				<textElement textAlignment="Center">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{persona_uno}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement x="12" y="87" width="188" height="20" uuid="9b0d22fe-fa26-4a39-8b81-697e4add69b7"/>
-				<textElement textAlignment="Center">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{cargo_persona_uno}]]></textFieldExpression>
-			</textField>
+				<text><![CDATA[NOMBRE Y FIRMA
+CARGO]]></text>
+			</staticText>
 		</band>
 	</columnFooter>
 	<pageFooter>
