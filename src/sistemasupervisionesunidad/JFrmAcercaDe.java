@@ -61,7 +61,7 @@ public class JFrmAcercaDe extends javax.swing.JFrame {
         jLabel5.setText("Desarrollado por Christian Y. Castillo Cov.");
         jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jButton1.setText("Ver proyecto en Github");
+        jButton1.setText("Ver proyecto en Github (aun en desarrollo)");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -82,7 +82,7 @@ public class JFrmAcercaDe extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(193, 193, 193)
+                .addGap(120, 120, 120)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -110,7 +110,7 @@ public class JFrmAcercaDe extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         try{
-            url = new URI("https://github.com/JurisdiccionSanitariaJacala/sistemasupervisionesunidad/tree/final");
+            url = new URI("https://github.com/christiancastillo/sistemainventariosyalmacen/tree/desarrollo");
             java.awt.Desktop.getDesktop().browse(url);
         } catch(Exception e){
             
