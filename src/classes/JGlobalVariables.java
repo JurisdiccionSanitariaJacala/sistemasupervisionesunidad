@@ -34,17 +34,36 @@ public class JGlobalVariables {
     private static String cargoPersonaCuatro = "";
     private static String cargoPersonaCinco = "";
     private static String cargoPersonaSeis = "";
+    private static String fechaSupervisionDDMMYY = "";
         
     
-        public static String getNombreDepartementoSup() {
+    public static String getNombreDepartementoSup() {
         return nombreDepartementoSup;
     }
 
     public static String getRutaGuardadoReporte() {
         return "C:\\supervisionesssh\\repo\\reportePrueba.pdf";
     }
+    
+    public static String getFechaSupervisionDDMMYY() {
+        return fechaSupervisionDDMMYY;
+    }
 
+    public static void setFechaSupervisionDDMMYY(String aFechaSupervisionDDMMYY) {
+        fechaSupervisionDDMMYY = aFechaSupervisionDDMMYY;
+    }
+    
+    public static String getRutaGuardadoReporte(String nombreArchivo) {
+        return "C:\\supervisionesssh\\repo\\"+nombreArchivo+".pdf";
+    }
+    
+    public static String getRutaGuardadoHistorial(String nombreArchivo){
+        return "C:\\supervisionesssh\\repo\\historial"+nombreArchivo+".pdf";
+    }
 
+    
+    
+    
     public static String getReporteJRXMLPersona(int idx){
         String[] reportePersonas = new String[6];
         reportePersonas[0] = "RSupervisionAIUnaPersona.jrxml";
@@ -75,11 +94,11 @@ public class JGlobalVariables {
     
     //definir ruta 
     public static String getRutaJRXml(){
-        return "C:\\Users\\usuario\\Documents\\Informatica\\Desarrollo\\Proyectos\\sistemasupervisionesunidad\\src\\sistemasupervisionesunidad\\reportes\\";
+        return "C:\\supervisionesssh\\repo\\jsp\\";
     }
     
     public static String getRutaJasperFile(){
-        return "C:\\Users\\usuario\\Documents\\Informatica\\Desarrollo\\Proyectos\\sistemasupervisionesunidad\\src\\sistemasupervisionesunidad\\reportes\\";
+        return "C:\\supervisionesssh\\repo\\jsp\\";
     }
 
     public static String getCargoPersonaUno() {

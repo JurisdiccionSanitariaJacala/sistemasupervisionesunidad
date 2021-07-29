@@ -49,13 +49,13 @@
 				</textElement>
 				<text><![CDATA[JURISDICCIÓN NO. 16 JACALA]]></text>
 			</staticText>
-			<image>
+			<image onErrorType="Blank">
 				<reportElement x="20" y="10" width="100" height="61" uuid="fa7b9c6f-b7c5-4e25-abbe-2e2f4143edba"/>
-				<imageExpression><![CDATA["C:\\Users\\usuario\\Documents\\Informatica\\Desarrollo\\Proyectos\\sistemasupervisionesunidad\\src\\resources\\pictures\\SSH-100px.png"]]></imageExpression>
+				<imageExpression><![CDATA["C:\\supervisionesssh\\repo\\img\\SSH-100px.png"]]></imageExpression>
 			</image>
-			<image>
+			<image hAlign="Center" onErrorType="Blank">
 				<reportElement x="491" y="2" width="89" height="80" uuid="926e263f-2512-4694-b387-cb769551ca12"/>
-				<imageExpression><![CDATA["C:\\Users\\usuario\\Documents\\Informatica\\Desarrollo\\Proyectos\\sistemasupervisionesunidad\\src\\resources\\pictures\\Escudo-100px.png"]]></imageExpression>
+				<imageExpression><![CDATA["C:\\supervisionesssh\\repo\\img\\Escudo-100px.png"]]></imageExpression>
 			</image>
 		</band>
 	</pageHeader>

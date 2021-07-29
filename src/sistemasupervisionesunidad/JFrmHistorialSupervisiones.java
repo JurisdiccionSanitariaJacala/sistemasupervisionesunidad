@@ -26,6 +26,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JOptionPane;
+import java.sql.SQLException;
 
 /**
  *
@@ -433,7 +435,16 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        recuperarDatosDB();
+        boolean isIDJTableEmpty = false;
+        
+        isIDJTableEmpty = jTxtID.getText().equals("");
+        JOptionPane.showMessageDialog(this, isIDJTableEmpty);
+        
+            if(jTHistorialSup.getRowCount() > 0 || isIDJTableEmpty == false){
+                recuperarDatosDB();
+            } else {
+                JOptionPane.showMessageDialog(this, "Advertencia: No puede generar el reporte si no se tienen datos seleccionados, \nhaga clic sobre cualquier parte de la tabla para obtener datos.");
+            }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -487,10 +498,11 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
             JGlobalVariables.setCargoPersonaSeis(rsQuery.getString("cargo_persona_seis"));
             JGlobalVariables.setDescripcionActividades(rsQuery.getString("desc_activ"));                                    
             //llamar al metodo para generar reportes de acuerdo al numero de personas
+            JOptionPane.showMessageDialog(this, JGlobalVariables.getNumeroPersonasLetra());
             generarReporte(JGlobalVariables.getNumeroPersonasLetra());
             JDBConnection.closeConnection();
         } catch(SQLException e){
-            System.out.println("error SQL: "+e.getMessage());
+            JOptionPane.showMessageDialog(this, "Error: "+e.getMessage()+"\n No hay datos.");
         }
     }
     
@@ -506,8 +518,8 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
         
         try{
             if(numPersonas.equals("1 PERSONA")){
-                rutaJRXML+="RSupervisionAIUnaPersona.jrxml";
-                rutaJasperFile+="RSupervisionAIUnaPersona.jasper";
+                rutaJRXML+=JGlobalVariables.getReporteJRXMLPersona(0);
+                rutaJasperFile+=JGlobalVariables.getJasperReportFile(0);
                 JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
                 Map<String, Object> parameters = new HashMap<>();
                 parameters.put("clues_unidad", JGlobalVariables.getClues());
@@ -517,12 +529,11 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
                 parameters.put("persona_uno",JGlobalVariables.getPersonaUno());
                 parameters.put("cargo_persona_uno",JGlobalVariables.getCargoPersonaUno());
                 JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters,new JREmptyDataSource());
-                JasperExportManager.exportReportToPdfFile(impresion, rutaGuardarReporte);        
                 JasperViewer.viewReport(impresion, false);
                 parameters = null;                
             } else if (numPersonas.equals("2 PERSONAS")){
-                rutaJRXML+="RSupervisionAIDosPersonas.jrxml";
-                rutaJasperFile+="RSupervisionAIDosPersonas.jasper";
+                rutaJRXML+=JGlobalVariables.getReporteJRXMLPersona(1);
+                rutaJasperFile+=JGlobalVariables.getJasperReportFile(1);
                 JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
                 Map<String, Object> parameters = new HashMap<>();
                 parameters.put("clues_unidad", JGlobalVariables.getClues());
@@ -534,12 +545,11 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
                 parameters.put("persona_dos",JGlobalVariables.getPersonaDos());
                 parameters.put("cargo_persona_dos",JGlobalVariables.getCargoPersonaDos());                
                 JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters,new JREmptyDataSource());
-                JasperExportManager.exportReportToPdfFile(impresion, rutaGuardarReporte);        
                 JasperViewer.viewReport(impresion, false);
                 parameters = null;                                
             } else if (numPersonas.equals("3 PERSONAS")){
-                rutaJRXML+="RSupervisionAITresPersonas.jrxml";
-                rutaJasperFile+="RSupervisionAITresPersonas.jasper";
+                rutaJRXML+=JGlobalVariables.getReporteJRXMLPersona(2);
+                rutaJasperFile+=JGlobalVariables.getJasperReportFile(2);
                 JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
                 Map<String, Object> parameters = new HashMap<>();
                 parameters.put("clues_unidad", JGlobalVariables.getClues());
@@ -552,13 +562,12 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
                 parameters.put("cargo_persona_dos",JGlobalVariables.getCargoPersonaDos());                
                 parameters.put("persona_tres",JGlobalVariables.getPersonaTres());
                 parameters.put("cargo_persona_tres",JGlobalVariables.getCargoPersonaTres());                                
-                JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters,new JREmptyDataSource());
-                JasperExportManager.exportReportToPdfFile(impresion, rutaGuardarReporte);        
+                JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters,new JREmptyDataSource());    
                 JasperViewer.viewReport(impresion, false);
                 parameters = null;                                                
             } else if (numPersonas.equals("4 PERSONAS")){
-                rutaJRXML+="RSupervisionAICuatroPersonas.jrxml";
-                rutaJasperFile+="RSupervisionAICuatroPersonas.jasper";
+                rutaJRXML+=JGlobalVariables.getReporteJRXMLPersona(3);
+                rutaJasperFile+=JGlobalVariables.getJasperReportFile(3);
                 JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
                 Map<String, Object> parameters = new HashMap<>();
                 parameters.put("clues_unidad", JGlobalVariables.getClues());
@@ -578,8 +587,8 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
                 JasperViewer.viewReport(impresion, false);
                 parameters = null;                                                
             } else if (numPersonas.equals("5 PERSONAS")){
-                rutaJRXML+="RSupervisionAICincoPersonas.jrxml";
-                rutaJasperFile+="RSupervisionAICincoPersonas.jasper";
+                rutaJRXML+=JGlobalVariables.getReporteJRXMLPersona(4);
+                rutaJasperFile+=JGlobalVariables.getJasperReportFile(4);
                 JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
                 Map<String, Object> parameters = new HashMap<>();
                 parameters.put("clues_unidad", JGlobalVariables.getClues());
@@ -595,10 +604,13 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
                 parameters.put("persona_cuatro",JGlobalVariables.getPersonaCuatro());
                 parameters.put("cargo_persona_cuatro",JGlobalVariables.getCargoPersonaCuatro());                                
                 parameters.put("persona_cinco",JGlobalVariables.getPersonaCinco());
-                parameters.put("cargo_persona_cinco",JGlobalVariables.getCargoPersonaCinco());                                                
+                parameters.put("cargo_persona_cinco",JGlobalVariables.getCargoPersonaCinco());   
+                JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters,new JREmptyDataSource());
+                JasperExportManager.exportReportToPdfFile(impresion, rutaGuardarReporte);        
+                JasperViewer.viewReport(impresion, false);                
             } else if (numPersonas.equals("6 PERSONAS")){
-                rutaJRXML+="RSupervisionAISeisPersonas.jrxml";
-                rutaJasperFile+="RSupervisionAISeisPersonas.jasper";
+                rutaJRXML+=JGlobalVariables.getReporteJRXMLPersona(5);
+                rutaJasperFile+=JGlobalVariables.getJasperReportFile(5);
                 JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
                 Map<String, Object> parameters = new HashMap<>();
                 parameters.put("clues_unidad", JGlobalVariables.getClues());
@@ -617,6 +629,9 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
                 parameters.put("cargo_persona_cinco",JGlobalVariables.getCargoPersonaCinco());                                                                     
                 parameters.put("persona_seis",JGlobalVariables.getPersonaCinco());
                 parameters.put("cargo_persona_seis",JGlobalVariables.getCargoPersonaCinco());
+                JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters,new JREmptyDataSource());
+                JasperExportManager.exportReportToPdfFile(impresion, rutaGuardarReporte);                        
+                JasperViewer.viewReport(impresion, false);                
             }            
         }catch(Exception e) {
         }

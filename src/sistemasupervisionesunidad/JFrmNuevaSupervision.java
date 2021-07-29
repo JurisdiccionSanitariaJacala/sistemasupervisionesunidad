@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 import classes.JGlobalVariables;
 import java.io.File;
+import java.text.DateFormat;
 import java.util.Locale;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JREmptyDataSource;
@@ -26,20 +27,25 @@ import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
-
 /**
  * Clase principal para realizar una Nueva Supervisión.
+ *
  * @author INVENTARIOS
  */
 public class JFrmNuevaSupervision extends javax.swing.JFrame {
+
     /**
      * Creates new form JFrmNuevaSupervision
-     */    
+     */
+
+    private SimpleDateFormat fechaddmmyy;
+    private DateFormat df;
+
     public JFrmNuevaSupervision() {
         initComponents();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
         dpFechaSupervision.setFormats(formatoFecha);
-        txtPersona1.setEnabled(true);               
+        txtPersona1.setEnabled(true);
         txtPersona2.setEnabled(false);
         txtPersona3.setEnabled(false);
         txtPersona4.setEnabled(false);
@@ -66,6 +72,7 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
 
         compoundPainter1 = new org.jdesktop.swingx.painter.CompoundPainter();
         defaultUserNameStore1 = new org.jdesktop.swingx.auth.DefaultUserNameStore();
+        jLabel21 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jContenedor = new javax.swing.JPanel();
@@ -111,6 +118,12 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+
+        jLabel21.setText("jLabel21");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -213,6 +226,22 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
 
         jLabel20.setText("Cargo");
 
+        jLabel22.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel22.setText("*");
+
+        jLabel23.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel23.setText("*");
+
+        jLabel24.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel24.setText("*");
+
+        jLabel25.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel25.setText("*");
+
         javax.swing.GroupLayout jContenedorLayout = new javax.swing.GroupLayout(jContenedor);
         jContenedor.setLayout(jContenedorLayout);
         jContenedorLayout.setHorizontalGroup(
@@ -224,22 +253,27 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jContenedorLayout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel5)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jScrollPane2))
-                        .addGroup(jContenedorLayout.createSequentialGroup()
-                            .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jContenedorLayout.createSequentialGroup()
-                                    .addGap(27, 27, 27)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane1)
-                                .addComponent(txtUnidad))))
+                    .addGroup(jContenedorLayout.createSequentialGroup()
+                        .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jContenedorLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane2))
+                            .addGroup(jContenedorLayout.createSequentialGroup()
+                                .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jContenedorLayout.createSequentialGroup()
+                                        .addGap(27, 27, 27)
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1)
+                                    .addComponent(txtUnidad))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel24)
+                            .addComponent(jLabel25)))
                     .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jContenedorLayout.createSequentialGroup()
                             .addComponent(jLabel7)
@@ -299,80 +333,90 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtCLUES, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
-                            .addComponent(dpFechaSupervision, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(44, Short.MAX_VALUE))
+                            .addComponent(dpFechaSupervision, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel23))))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         jContenedorLayout.setVerticalGroup(
             jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jContenedorLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(12, Short.MAX_VALUE)
                 .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(dpFechaSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dpFechaSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCLUES, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(16, 16, 16)
                 .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(cbNumPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(cbDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtPersona1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15)
-                    .addComponent(jTxtCargoPersona1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(txtPersona2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTxtCargoPersona2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel16))
-                .addGap(8, 8, 8)
-                .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(txtPersona3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTxtCargoPersona3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel17))
-                .addGap(8, 8, 8)
-                .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(txtPersona4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTxtCargoPersona4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel18))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(txtPersona5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTxtCargoPersona5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel19))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(txtPersona6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTxtCargoPersona6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel20))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jContenedorLayout.createSequentialGroup()
+                        .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(cbNumPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(cbDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(txtPersona1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel15)
+                            .addComponent(jTxtCargoPersona1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(txtPersona2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTxtCargoPersona2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16))
+                        .addGap(8, 8, 8)
+                        .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(txtPersona3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTxtCargoPersona3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17))
+                        .addGap(8, 8, 8)
+                        .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(txtPersona4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTxtCargoPersona4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel13)
+                            .addComponent(txtPersona5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTxtCargoPersona5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel19))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(txtPersona6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTxtCargoPersona6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel20))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jScrollPane3.setViewportView(jContenedor);
@@ -383,19 +427,18 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
                 .addContainerGap())
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -413,25 +456,25 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
         JGlobalVariables.setFechaSupervision(fechaDMY);
         JGlobalVariables.setClues(txtCLUES.getText());
         JGlobalVariables.setDescripcionActividades(txtActividadesSup.getText());
-        JGlobalVariables.setIdDepartamento(cbDepartamento.getSelectedIndex()+1);
+        JGlobalVariables.setIdDepartamento(cbDepartamento.getSelectedIndex() + 1);
 
         int idDepartamento = 0;
 
         try {
-            idDepartamento = cbDepartamento.getSelectedIndex()+1;
+            idDepartamento = cbDepartamento.getSelectedIndex() + 1;
             JDBConnection.openConnection();
-            JDBConnection.insertQuery(fechaDMY, txtCLUES.getText(),txtActividadesSup.getText(),
-                    txtUnidad.getText(),txtMotivoSupervision.getText(), 
-                    String.valueOf(cbNumPersonas.getSelectedItem()),txtPersona1.getText(),
-                    txtPersona2.getText(),txtPersona3.getText(),txtPersona4.getText(),
-                    txtPersona5.getText(),txtPersona6.getText(),idDepartamento,
-                    jTxtCargoPersona1.getText(),jTxtCargoPersona2.getText(),
-                    jTxtCargoPersona3.getText(),jTxtCargoPersona4.getText(),
+            JDBConnection.insertQuery(fechaDMY, txtCLUES.getText(), txtActividadesSup.getText(),
+                    txtUnidad.getText(), txtMotivoSupervision.getText(),
+                    String.valueOf(cbNumPersonas.getSelectedItem()), txtPersona1.getText(),
+                    txtPersona2.getText(), txtPersona3.getText(), txtPersona4.getText(),
+                    txtPersona5.getText(), txtPersona6.getText(), idDepartamento,
+                    jTxtCargoPersona1.getText(), jTxtCargoPersona2.getText(),
+                    jTxtCargoPersona3.getText(), jTxtCargoPersona4.getText(),
                     jTxtCargoPersona5.getText(), jTxtCargoPersona6.getText());
             generarReporte(String.valueOf(cbNumPersonas.getSelectedItem()).substring(0, 1));
             JDBConnection.closeConnection();
-        } catch(Exception e) {
-            JOptionPane.showMessageDialog(null,"Error: " +e.getMessage() + "\n Causas: "+e.getCause());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage() + "\n Causas: " + e.getCause());
         }
 
         //generar metodo para crear reporte
@@ -452,118 +495,124 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
         //String itemCb = String.valueOf(jComboBox1.getSelectedItem());
         switch (cbNumPersonas.getSelectedIndex()) {
             case 0:
-            //una
-            fillComboBoxWithNoValue(5);
-            txtPersona1.setEnabled(true);
-            jTxtCargoPersona1.setEnabled(true);
-            txtPersona2.setEnabled(false);
-            jTxtCargoPersona2.setEnabled(false);
-            txtPersona3.setEnabled(false);
-            jTxtCargoPersona3.setEnabled(false);
-            txtPersona4.setEnabled(false);
-            jTxtCargoPersona4.setEnabled(false);
-            txtPersona5.setEnabled(false);
-            jTxtCargoPersona5.setEnabled(false);
-            txtPersona6.setEnabled(false);
-            jTxtCargoPersona6.setEnabled(false);
-            break;
+                //una
+                fillComboBoxWithNoValue(5);
+                txtPersona1.setEnabled(true);
+                jTxtCargoPersona1.setEnabled(true);
+                txtPersona2.setEnabled(false);
+                jTxtCargoPersona2.setEnabled(false);
+                txtPersona3.setEnabled(false);
+                jTxtCargoPersona3.setEnabled(false);
+                txtPersona4.setEnabled(false);
+                jTxtCargoPersona4.setEnabled(false);
+                txtPersona5.setEnabled(false);
+                jTxtCargoPersona5.setEnabled(false);
+                txtPersona6.setEnabled(false);
+                jTxtCargoPersona6.setEnabled(false);
+                break;
             case 1:
-            //dos
-            fillComboBoxWithNoValue(4);
-            txtPersona1.setEnabled(true);
-            jTxtCargoPersona1.setEnabled(true);
-            txtPersona2.setEnabled(true);
-            jTxtCargoPersona2.setEnabled(true);
-            txtPersona3.setEnabled(false);
-            jTxtCargoPersona3.setEnabled(false);
-            txtPersona4.setEnabled(false);
-            jTxtCargoPersona4.setEnabled(false);
-            txtPersona5.setEnabled(false);
-            jTxtCargoPersona5.setEnabled(false);
-            txtPersona6.setEnabled(false);
-            jTxtCargoPersona6.setEnabled(false);
-            break;
+                //dos
+                fillComboBoxWithNoValue(4);
+                txtPersona1.setEnabled(true);
+                jTxtCargoPersona1.setEnabled(true);
+                txtPersona2.setEnabled(true);
+                jTxtCargoPersona2.setEnabled(true);
+                txtPersona3.setEnabled(false);
+                jTxtCargoPersona3.setEnabled(false);
+                txtPersona4.setEnabled(false);
+                jTxtCargoPersona4.setEnabled(false);
+                txtPersona5.setEnabled(false);
+                jTxtCargoPersona5.setEnabled(false);
+                txtPersona6.setEnabled(false);
+                jTxtCargoPersona6.setEnabled(false);
+                break;
             case 2:
-            //tres
-            fillComboBoxWithNoValue(3);
-            txtPersona1.setEnabled(true);
-            jTxtCargoPersona1.setEnabled(true);
-            txtPersona2.setEnabled(true);
-            jTxtCargoPersona2.setEnabled(true);
-            txtPersona3.setEnabled(true);
-            jTxtCargoPersona3.setEnabled(true);
-            txtPersona4.setEnabled(false);
-            jTxtCargoPersona4.setEnabled(false);
-            txtPersona5.setEnabled(false);
-            jTxtCargoPersona5.setEnabled(false);
-            txtPersona6.setEnabled(false);
-            jTxtCargoPersona6.setEnabled(false);
-            break;
+                //tres
+                fillComboBoxWithNoValue(3);
+                txtPersona1.setEnabled(true);
+                jTxtCargoPersona1.setEnabled(true);
+                txtPersona2.setEnabled(true);
+                jTxtCargoPersona2.setEnabled(true);
+                txtPersona3.setEnabled(true);
+                jTxtCargoPersona3.setEnabled(true);
+                txtPersona4.setEnabled(false);
+                jTxtCargoPersona4.setEnabled(false);
+                txtPersona5.setEnabled(false);
+                jTxtCargoPersona5.setEnabled(false);
+                txtPersona6.setEnabled(false);
+                jTxtCargoPersona6.setEnabled(false);
+                break;
             case 3:
-            //cuatro
-            fillComboBoxWithNoValue(2);
-            txtPersona1.setEnabled(true);
-            jTxtCargoPersona1.setEnabled(true);
-            txtPersona2.setEnabled(true);
-            jTxtCargoPersona2.setEnabled(true);
-            txtPersona3.setEnabled(true);
-            jTxtCargoPersona3.setEnabled(true);
-            txtPersona4.setEnabled(true);
-            jTxtCargoPersona4.setEnabled(true);
-            txtPersona5.setEnabled(false);
-            txtPersona6.setEnabled(false);
-            jTxtCargoPersona5.setEnabled(false);
-            jTxtCargoPersona6.setEnabled(false);
-            break;
+                //cuatro
+                fillComboBoxWithNoValue(2);
+                txtPersona1.setEnabled(true);
+                jTxtCargoPersona1.setEnabled(true);
+                txtPersona2.setEnabled(true);
+                jTxtCargoPersona2.setEnabled(true);
+                txtPersona3.setEnabled(true);
+                jTxtCargoPersona3.setEnabled(true);
+                txtPersona4.setEnabled(true);
+                jTxtCargoPersona4.setEnabled(true);
+                txtPersona5.setEnabled(false);
+                txtPersona6.setEnabled(false);
+                jTxtCargoPersona5.setEnabled(false);
+                jTxtCargoPersona6.setEnabled(false);
+                break;
             case 4:
-            //cinco
-            fillComboBoxWithNoValue(1);
-            txtPersona1.setEnabled(true);
-            jTxtCargoPersona1.setEnabled(true);
-            txtPersona2.setEnabled(true);
-            jTxtCargoPersona2.setEnabled(true);
-            txtPersona3.setEnabled(true);
-            jTxtCargoPersona3.setEnabled(true);
-            txtPersona4.setEnabled(true);
-            jTxtCargoPersona4.setEnabled(true);
-            txtPersona5.setEnabled(true);
-            jTxtCargoPersona5.setEnabled(true);
-            txtPersona6.setEnabled(false);
-            jTxtCargoPersona6.setEnabled(false);
-            break;
+                //cinco
+                fillComboBoxWithNoValue(1);
+                txtPersona1.setEnabled(true);
+                jTxtCargoPersona1.setEnabled(true);
+                txtPersona2.setEnabled(true);
+                jTxtCargoPersona2.setEnabled(true);
+                txtPersona3.setEnabled(true);
+                jTxtCargoPersona3.setEnabled(true);
+                txtPersona4.setEnabled(true);
+                jTxtCargoPersona4.setEnabled(true);
+                txtPersona5.setEnabled(true);
+                jTxtCargoPersona5.setEnabled(true);
+                txtPersona6.setEnabled(false);
+                jTxtCargoPersona6.setEnabled(false);
+                break;
             case 5:
-            //seis
-            fillComboBoxWithNoValue(6);
-            txtPersona1.setEnabled(true);
-            txtPersona2.setEnabled(true);
-            txtPersona3.setEnabled(true);
-            txtPersona4.setEnabled(true);
-            txtPersona5.setEnabled(true);
-            txtPersona6.setEnabled(true);
-            jTxtCargoPersona1.setEnabled(true);
-            jTxtCargoPersona2.setEnabled(true);
-            jTxtCargoPersona3.setEnabled(true);
-            jTxtCargoPersona4.setEnabled(true);
-            jTxtCargoPersona5.setEnabled(true);
-            jTxtCargoPersona6.setEnabled(true);
-            break;
+                //seis
+                fillComboBoxWithNoValue(6);
+                txtPersona1.setEnabled(true);
+                txtPersona2.setEnabled(true);
+                txtPersona3.setEnabled(true);
+                txtPersona4.setEnabled(true);
+                txtPersona5.setEnabled(true);
+                txtPersona6.setEnabled(true);
+                jTxtCargoPersona1.setEnabled(true);
+                jTxtCargoPersona2.setEnabled(true);
+                jTxtCargoPersona3.setEnabled(true);
+                jTxtCargoPersona4.setEnabled(true);
+                jTxtCargoPersona5.setEnabled(true);
+                jTxtCargoPersona6.setEnabled(true);
+                break;
             default:
-            JOptionPane.showMessageDialog(null,"Prueba de mensaje");
-            break;
+                JOptionPane.showMessageDialog(null, "Prueba de mensaje");
+                break;
         }
     }//GEN-LAST:event_cbNumPersonasActionPerformed
 
     private void dpFechaSupervisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dpFechaSupervisionActionPerformed
         // TODO add your handling code here:
         //cambiar el formato de fecha a DD/mm/YYYY
+        SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyy");
+        Date fechaSupervision = dpFechaSupervision.getDate();
+        dateFormat.format(fechaSupervision);
+        JGlobalVariables.setFechaSupervisionDDMMYY(dateFormat.format(fechaSupervision));
     }//GEN-LAST:event_dpFechaSupervisionActionPerformed
 
-    
     /**
-     * <code>fillComboBoxWithNoValue</code> se utiliza para rellenar elementos <code>TextField</code> del GUI.
-     * @param cantidad de acuerdo a la cantidad, se puede "limpiar" los <code>TextField</code>. Rango: 1 a 6.
+     * <code>fillComboBoxWithNoValue</code> se utiliza para rellenar elementos
+     * <code>TextField</code> del GUI.
+     *
+     * @param cantidad de acuerdo a la cantidad, se puede "limpiar" los
+     * <code>TextField</code>. Rango: 1 a 6.
      */
-    private void fillComboBoxWithNoValue(int cantidad){
+    private void fillComboBoxWithNoValue(int cantidad) {
         switch (cantidad) {
             case 6:
                 txtPersona1.setText(String.valueOf(""));
@@ -571,7 +620,7 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
                 txtPersona3.setText(String.valueOf(""));
                 txtPersona4.setText(String.valueOf(""));
                 txtPersona5.setText(String.valueOf(""));
-                txtPersona6.setText(String.valueOf(""));        
+                txtPersona6.setText(String.valueOf(""));
                 jTxtCargoPersona1.setText(String.valueOf(""));
                 jTxtCargoPersona2.setText(String.valueOf(""));
                 jTxtCargoPersona3.setText(String.valueOf(""));
@@ -601,223 +650,247 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
                 jTxtCargoPersona3.setText("--");
                 jTxtCargoPersona4.setText("--");
                 jTxtCargoPersona5.setText("--");
-                jTxtCargoPersona6.setText("--");                
+                jTxtCargoPersona6.setText("--");
                 break;
-            case 3: 
+            case 3:
                 txtPersona2.setText("");
-                txtPersona3.setText("");                
+                txtPersona3.setText("");
                 txtPersona4.setText("--");
                 txtPersona5.setText("--");
-                txtPersona6.setText("--"); 
+                txtPersona6.setText("--");
                 jTxtCargoPersona2.setText("");
                 jTxtCargoPersona3.setText("");
                 jTxtCargoPersona4.setText("--");
                 jTxtCargoPersona5.setText("--");
-                jTxtCargoPersona6.setText("--");                 
+                jTxtCargoPersona6.setText("--");
                 break;
             case 2:
                 txtPersona2.setText("");
-                txtPersona3.setText("");                
-                txtPersona4.setText("");                
+                txtPersona3.setText("");
+                txtPersona4.setText("");
                 txtPersona5.setText("--");
-                txtPersona6.setText("--");     
+                txtPersona6.setText("--");
                 jTxtCargoPersona2.setText("");
                 jTxtCargoPersona3.setText("");
                 jTxtCargoPersona4.setText("");
                 jTxtCargoPersona5.setText("--");
-                jTxtCargoPersona6.setText("--");                 
+                jTxtCargoPersona6.setText("--");
                 break;
             case 1:
                 txtPersona2.setText("");
-                txtPersona3.setText("");                
-                txtPersona4.setText("");                
-                txtPersona5.setText("");                
-                txtPersona6.setText("--");      
+                txtPersona3.setText("");
+                txtPersona4.setText("");
+                txtPersona5.setText("");
+                txtPersona6.setText("--");
                 jTxtCargoPersona2.setText("");
                 jTxtCargoPersona3.setText("");
                 jTxtCargoPersona4.setText("");
                 jTxtCargoPersona5.setText("");
-                jTxtCargoPersona6.setText("--");                 
+                jTxtCargoPersona6.setText("--");
                 break;
-            default: break;
+            default:
+                break;
         }
     }
+
     /**
-     * Metodo no servible, utilizar <code>generarReporte(String numeroDePersonas)</code> en su lugar.
+     * Metodo no servible, utilizar
+     * <code>generarReporte(String numeroDePersonas)</code> en su lugar.
+     *
      */
-    private void generarReporte(){
+    private void generarReporte() {
         try {
-        String rutaGuardarReporte = JGlobalVariables.getRutaGuardadoReporte();
-        String rutaPatron = "C:\\Users\\usuario\\Downloads\\sistemasupervisionesunidad-final\\sistemasupervisionesunidad-final\\src\\sistemasupervisionesunidad\\reportes\\RSupervisionAIUnaPersona.jrxml"; //Jrxml
-        //String rutaPatron = "C:/supervisionesssh/repo/RSupervisionAIUnaPersona.jrxml";
-        String rutaJasperFile = "C:\\Users\\usuario\\Downloads\\sistemasupervisionesunidad-final\\sistemasupervisionesunidad-final\\src\\sistemasupervisionesunidad\\reportes\\RSupervisionAIUnaPersona.jasper";
-        //String rutaJasperFile = "C:/supervisionesssh/repo/RSupervisionAIUnaPersona.jasper";
-        
-        JasperCompileManager.compileReportToFile(rutaPatron, rutaJasperFile);
-        Map<String, Object> parameters = new HashMap<>();
-        parameters.put("clues_unidad", this.txtCLUES.getText());
-        parameters.put("descripcion_actividad", this.txtActividadesSup.getText());
-        //File reportPattern = new File(rutaPatron);
-        //JasperDesign jasperDesign = JRXmlLoader.load(reportPattern);
-        //JasperReport reporte = JasperCompileManager.compileReport(jasperDesign);
-        //JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters,JDBConnection.getConnection());
-        JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters,new JREmptyDataSource());
-        JasperExportManager.exportReportToPdfFile(impresion, rutaGuardarReporte);        
-        JasperViewer.viewReport(impresion, false);
-    } catch(Exception e){
-        JOptionPane.showMessageDialog(null,"Error: " +e.getMessage()+"\n Causas: "+e.getCause()+e.getStackTrace());
+            String rutaGuardarReporte = JGlobalVariables.getRutaGuardadoReporte();
+            String rutaPatron = "C:\\Users\\usuario\\Downloads\\sistemasupervisionesunidad-final\\sistemasupervisionesunidad-final\\src\\sistemasupervisionesunidad\\reportes\\RSupervisionAIUnaPersona.jrxml"; //Jrxml
+            //String rutaPatron = "C:/supervisionesssh/repo/RSupervisionAIUnaPersona.jrxml";
+            String rutaJasperFile = "C:\\Users\\usuario\\Downloads\\sistemasupervisionesunidad-final\\sistemasupervisionesunidad-final\\src\\sistemasupervisionesunidad\\reportes\\RSupervisionAIUnaPersona.jasper";
+            //String rutaJasperFile = "C:/supervisionesssh/repo/RSupervisionAIUnaPersona.jasper";
+
+            JasperCompileManager.compileReportToFile(rutaPatron, rutaJasperFile);
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("clues_unidad", this.txtCLUES.getText());
+            parameters.put("descripcion_actividad", this.txtActividadesSup.getText());
+            //File reportPattern = new File(rutaPatron);
+            //JasperDesign jasperDesign = JRXmlLoader.load(reportPattern);
+            //JasperReport reporte = JasperCompileManager.compileReport(jasperDesign);
+            //JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters,JDBConnection.getConnection());
+            JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters, new JREmptyDataSource());
+            JasperExportManager.exportReportToPdfFile(impresion, rutaGuardarReporte);
+            JasperViewer.viewReport(impresion, false);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage() + "\n Causas: " + e.getCause() + e.getStackTrace());
+        }
+
     }
-           
-   }    
-    
-    
+
     /**
      * Método para generar reporte de acuerdo al número de personas ingresadas.
-     * @param numeroDePersonas Número de personas, se obtiene en <code>String</code>, después se procesa
-     * para cambiarlo a int y utilizarlo en un <code>switch</code>.
+     *
+     * @param numeroDePersonas Número de personas, se obtiene en
+     * <code>String</code>, después se procesa para cambiarlo a int y utilizarlo
+     * en un <code>switch</code>.
      */
-    private void generarReporte(String numeroDePersonas){
-        Integer.parseInt(String.valueOf(numeroDePersonas));
-        String rutaGuardarReporte = JGlobalVariables.getRutaGuardadoReporte();
-        //String rutaJRXML = "C:\\supervisionesssh\\repo\\jsp\\";
-        //String rutaJasperFile = "C:\\supervisionesssh\\repo\\jsp\\";
-        String rutaJRXML = JGlobalVariables.getRutaJRXml();
-        String rutaJasperFile = JGlobalVariables.getRutaJasperFile();
-        
-        try{
-            switch(Integer.parseInt(String.valueOf(numeroDePersonas))){
-            case 1:
-                rutaJRXML+=JGlobalVariables.getReporteJRXMLPersona(0);
-                rutaJasperFile+=JGlobalVariables.getJasperReportFile(0);
-                JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
-                Map<String, Object> parameters = new HashMap<>();
-                parameters.put("clues_unidad", this.txtCLUES.getText());
-                parameters.put("descripcion_actividad", this.txtActividadesSup.getText());                
-                parameters.put("depto_supervisor", String.valueOf(cbDepartamento.getSelectedItem()));
-                parameters.put("fecha_supervision",JGlobalVariables.getFechaSupervision());
-                parameters.put("persona_uno",txtPersona1.getText());
-                parameters.put("cargo_persona_uno",jTxtCargoPersona1.getText());
-                JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters,new JREmptyDataSource());
-                JasperExportManager.exportReportToPdfFile(impresion, rutaGuardarReporte);        
-                JasperViewer.viewReport(impresion, false);
-                parameters = null;
-                break;
-            case 2:
-                rutaJRXML+=JGlobalVariables.getReporteJRXMLPersona(1);
-                rutaJasperFile+=JGlobalVariables.getJasperReportFile(1);
-                JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
-                Map<String, Object> parameters2 = new HashMap<>();
-                parameters2.put("clues_unidad", this.txtCLUES.getText());
-                parameters2.put("descripcion_actividad", this.txtActividadesSup.getText());                
-                parameters2.put("depto_supervisor", String.valueOf(cbDepartamento.getSelectedItem()));
-                parameters2.put("fecha_supervision",JGlobalVariables.getFechaSupervision());
-                parameters2.put("persona_uno",txtPersona1.getText());
-                parameters2.put("cargo_persona_uno",jTxtCargoPersona1.getText());
-                parameters2.put("persona_dos",txtPersona2.getText());
-                parameters2.put("cargo_persona_dos",jTxtCargoPersona2.getText());
-                JasperPrint impresion2 = JasperFillManager.fillReport(rutaJasperFile, parameters2,new JREmptyDataSource());
-                JasperExportManager.exportReportToPdfFile(impresion2, rutaGuardarReporte);        
-                JasperViewer.viewReport(impresion2, false);
-                parameters2 = null;
-                break;
-            case 3:
-                rutaJRXML+=JGlobalVariables.getReporteJRXMLPersona(2);
-                rutaJasperFile+=JGlobalVariables.getJasperReportFile(2);
-                JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
-                Map<String, Object> parameters3 = new HashMap<>();
-                parameters3.put("clues_unidad", this.txtCLUES.getText());
-                parameters3.put("descripcion_actividad", this.txtActividadesSup.getText());                
-                parameters3.put("depto_supervisor", String.valueOf(cbDepartamento.getSelectedItem()));
-                parameters3.put("fecha_supervision",JGlobalVariables.getFechaSupervision());
-                parameters3.put("persona_uno",txtPersona1.getText());
-                parameters3.put("cargo_persona_uno",jTxtCargoPersona1.getText());
-                parameters3.put("persona_dos",txtPersona2.getText());
-                parameters3.put("cargo_persona_dos",jTxtCargoPersona2.getText());                
-                parameters3.put("persona_tres",txtPersona3.getText());
-                parameters3.put("cargo_persona_tres",jTxtCargoPersona3.getText());                                
-                JasperPrint impresion3 = JasperFillManager.fillReport(rutaJasperFile, parameters3,new JREmptyDataSource());
-                JasperExportManager.exportReportToPdfFile(impresion3, rutaGuardarReporte);        
-                JasperViewer.viewReport(impresion3, false);
-                parameters3 = null;                
-                break;
-            case 4:
-                rutaJRXML+=JGlobalVariables.getReporteJRXMLPersona(3);
-                rutaJasperFile+=JGlobalVariables.getJasperReportFile(3);
-                JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
-                Map<String, Object> parameters4 = new HashMap<>();
-                parameters4.put("clues_unidad", this.txtCLUES.getText());
-                parameters4.put("descripcion_actividad", this.txtActividadesSup.getText());                
-                parameters4.put("depto_supervisor", String.valueOf(cbDepartamento.getSelectedItem()));
-                parameters4.put("fecha_supervision",JGlobalVariables.getFechaSupervision());
-                parameters4.put("persona_uno",txtPersona1.getText());
-                parameters4.put("cargo_persona_uno",jTxtCargoPersona1.getText());
-                parameters4.put("persona_dos",txtPersona2.getText());
-                parameters4.put("cargo_persona_dos",jTxtCargoPersona2.getText());                
-                parameters4.put("persona_tres",txtPersona3.getText());
-                parameters4.put("cargo_persona_tres",jTxtCargoPersona3.getText());                                                
-                parameters4.put("persona_cuatro",txtPersona4.getText());
-                parameters4.put("cargo_persona_cuatro",jTxtCargoPersona4.getText());
-                JasperPrint impresion4 = JasperFillManager.fillReport(rutaJasperFile, parameters4,new JREmptyDataSource());
-                JasperExportManager.exportReportToPdfFile(impresion4, rutaGuardarReporte);        
-                JasperViewer.viewReport(impresion4, false);
-                parameters4 = null;                     
-                break;
-            case 5:
-                rutaJRXML+=JGlobalVariables.getReporteJRXMLPersona(4);
-                rutaJasperFile+=JGlobalVariables.getJasperReportFile(4);
-                JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
-                Map<String, Object> parameters5 = new HashMap<>();
-                parameters5.put("clues_unidad", this.txtCLUES.getText());
-                parameters5.put("descripcion_actividad", this.txtActividadesSup.getText());                
-                parameters5.put("depto_supervisor", String.valueOf(cbDepartamento.getSelectedItem()));
-                parameters5.put("fecha_supervision",JGlobalVariables.getFechaSupervision());
-                parameters5.put("persona_uno",txtPersona1.getText());
-                parameters5.put("cargo_persona_uno",jTxtCargoPersona1.getText());
-                parameters5.put("persona_dos",txtPersona2.getText());
-                parameters5.put("cargo_persona_dos",jTxtCargoPersona2.getText());                
-                parameters5.put("persona_tres",txtPersona3.getText());
-                parameters5.put("cargo_persona_tres",jTxtCargoPersona3.getText());                                                
-                parameters5.put("persona_cuatro",txtPersona4.getText());
-                parameters5.put("cargo_persona_cuatro",jTxtCargoPersona4.getText());                
-                parameters5.put("persona_cinco",txtPersona5.getText());
-                parameters5.put("cargo_persona_cinco",jTxtCargoPersona5.getText());                                
-                JasperPrint impresion5 = JasperFillManager.fillReport(rutaJasperFile, parameters5,new JREmptyDataSource());
-                JasperExportManager.exportReportToPdfFile(impresion5, rutaGuardarReporte);        
-                JasperViewer.viewReport(impresion5, false);
-                parameters5 = null;                  
-                break;
-            case 6:
-                rutaJRXML+=JGlobalVariables.getReporteJRXMLPersona(5);
-                rutaJasperFile+=JGlobalVariables.getJasperReportFile(5);
-                JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
-                Map<String, Object> parameters6 = new HashMap<>();
-                parameters6.put("clues_unidad", this.txtCLUES.getText());
-                parameters6.put("descripcion_actividad", this.txtActividadesSup.getText());                
-                parameters6.put("depto_supervisor", String.valueOf(cbDepartamento.getSelectedItem()));
-                parameters6.put("fecha_supervision",JGlobalVariables.getFechaSupervision());
-                parameters6.put("persona_uno",txtPersona1.getText());
-                parameters6.put("cargo_persona_uno",jTxtCargoPersona1.getText());
-                parameters6.put("persona_dos",txtPersona2.getText());
-                parameters6.put("cargo_persona_dos",jTxtCargoPersona2.getText());                
-                parameters6.put("persona_tres",txtPersona3.getText());
-                parameters6.put("cargo_persona_tres",jTxtCargoPersona3.getText());                                                
-                parameters6.put("persona_cuatro",txtPersona4.getText());
-                parameters6.put("cargo_persona_cuatro",jTxtCargoPersona4.getText());                
-                parameters6.put("persona_cinco",txtPersona5.getText());
-                parameters6.put("cargo_persona_cinco",jTxtCargoPersona5.getText());  
-                parameters6.put("persona_seis",txtPersona6.getText());
-                parameters6.put("cargo_persona_seis",jTxtCargoPersona6.getText());                  
-                JasperPrint impresion6 = JasperFillManager.fillReport(rutaJasperFile, parameters6,new JREmptyDataSource());
-                JasperExportManager.exportReportToPdfFile(impresion6, rutaGuardarReporte);        
-                JasperViewer.viewReport(impresion6, false);
-                parameters6 = null;                  
-                break;
-            default: break;         
+    private void generarReporte(String numeroDePersonas) {
+        boolean isFechaSupervisionEmpty = false;
+        boolean isClaveCLUESEmpty = false;
+        boolean isNombreUnidadEmpty = false;
+        boolean isDescripcionActividadesEmpty = false;
+
+        isFechaSupervisionEmpty = dpFechaSupervision.getDate() == null;
+        isClaveCLUESEmpty = txtCLUES.getText().equals("");
+        isNombreUnidadEmpty = txtUnidad.getText().equals("");
+        isDescripcionActividadesEmpty = txtActividadesSup.getText().equals("");
+
+        if (isFechaSupervisionEmpty || isClaveCLUESEmpty || isDescripcionActividadesEmpty || isFechaSupervisionEmpty) {
+            JOptionPane.showMessageDialog(this, "Por favor rellene los campos marcados con *");
+        } else {
+            String nombreArchivo = "visita-" + cbDepartamento.getSelectedItem() + "-" + JGlobalVariables.getClues() + "-" + JGlobalVariables.getFechaSupervisionDDMMYY();
+            Integer.parseInt(String.valueOf(numeroDePersonas));
+            String rutaGuardarReporte = JGlobalVariables.getRutaGuardadoReporte(nombreArchivo);
+            //String rutaJRXML = "C:\\supervisionesssh\\repo\\jsp\\";
+            //String rutaJasperFile = "C:\\supervisionesssh\\repo\\jsp\\";
+            String rutaJRXML = JGlobalVariables.getRutaJRXml();
+            String rutaJasperFile = JGlobalVariables.getRutaJasperFile();
+
+            try {
+                switch (Integer.parseInt(String.valueOf(numeroDePersonas))) {
+                    case 1:
+                        rutaJRXML += JGlobalVariables.getReporteJRXMLPersona(0);
+                        rutaJasperFile += JGlobalVariables.getJasperReportFile(0);
+                        JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
+                        Map<String, Object> parameters = new HashMap<>();
+                        parameters.put("clues_unidad", this.txtCLUES.getText());
+                        parameters.put("descripcion_actividad", this.txtActividadesSup.getText());
+                        parameters.put("depto_supervisor", String.valueOf(cbDepartamento.getSelectedItem()));
+                        parameters.put("fecha_supervision", JGlobalVariables.getFechaSupervision());
+                        parameters.put("persona_uno", txtPersona1.getText());
+                        parameters.put("cargo_persona_uno", jTxtCargoPersona1.getText());
+                        JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters, new JREmptyDataSource());
+                        JasperExportManager.exportReportToPdfFile(impresion, rutaGuardarReporte);
+                        JasperViewer.viewReport(impresion, false);
+                        parameters = null;
+                        break;
+                    case 2:
+                        rutaJRXML += JGlobalVariables.getReporteJRXMLPersona(1);
+                        rutaJasperFile += JGlobalVariables.getJasperReportFile(1);
+                        JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
+                        Map<String, Object> parameters2 = new HashMap<>();
+                        parameters2.put("clues_unidad", this.txtCLUES.getText());
+                        parameters2.put("descripcion_actividad", this.txtActividadesSup.getText());
+                        parameters2.put("depto_supervisor", String.valueOf(cbDepartamento.getSelectedItem()));
+                        parameters2.put("fecha_supervision", JGlobalVariables.getFechaSupervision());
+                        parameters2.put("persona_uno", txtPersona1.getText());
+                        parameters2.put("cargo_persona_uno", jTxtCargoPersona1.getText());
+                        parameters2.put("persona_dos", txtPersona2.getText());
+                        parameters2.put("cargo_persona_dos", jTxtCargoPersona2.getText());
+                        JasperPrint impresion2 = JasperFillManager.fillReport(rutaJasperFile, parameters2, new JREmptyDataSource());
+                        JasperExportManager.exportReportToPdfFile(impresion2, rutaGuardarReporte);
+                        JasperViewer.viewReport(impresion2, false);
+                        parameters2 = null;
+                        break;
+                    case 3:
+                        rutaJRXML += JGlobalVariables.getReporteJRXMLPersona(2);
+                        rutaJasperFile += JGlobalVariables.getJasperReportFile(2);
+                        JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
+                        Map<String, Object> parameters3 = new HashMap<>();
+                        parameters3.put("clues_unidad", this.txtCLUES.getText());
+                        parameters3.put("descripcion_actividad", this.txtActividadesSup.getText());
+                        parameters3.put("depto_supervisor", String.valueOf(cbDepartamento.getSelectedItem()));
+                        parameters3.put("fecha_supervision", JGlobalVariables.getFechaSupervision());
+                        parameters3.put("persona_uno", txtPersona1.getText());
+                        parameters3.put("cargo_persona_uno", jTxtCargoPersona1.getText());
+                        parameters3.put("persona_dos", txtPersona2.getText());
+                        parameters3.put("cargo_persona_dos", jTxtCargoPersona2.getText());
+                        parameters3.put("persona_tres", txtPersona3.getText());
+                        parameters3.put("cargo_persona_tres", jTxtCargoPersona3.getText());
+                        JasperPrint impresion3 = JasperFillManager.fillReport(rutaJasperFile, parameters3, new JREmptyDataSource());
+                        JasperExportManager.exportReportToPdfFile(impresion3, rutaGuardarReporte);
+                        JasperViewer.viewReport(impresion3, false);
+                        parameters3 = null;
+                        break;
+                    case 4:
+                        rutaJRXML += JGlobalVariables.getReporteJRXMLPersona(3);
+                        rutaJasperFile += JGlobalVariables.getJasperReportFile(3);
+                        JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
+                        Map<String, Object> parameters4 = new HashMap<>();
+                        parameters4.put("clues_unidad", this.txtCLUES.getText());
+                        parameters4.put("descripcion_actividad", this.txtActividadesSup.getText());
+                        parameters4.put("depto_supervisor", String.valueOf(cbDepartamento.getSelectedItem()));
+                        parameters4.put("fecha_supervision", JGlobalVariables.getFechaSupervision());
+                        parameters4.put("persona_uno", txtPersona1.getText());
+                        parameters4.put("cargo_persona_uno", jTxtCargoPersona1.getText());
+                        parameters4.put("persona_dos", txtPersona2.getText());
+                        parameters4.put("cargo_persona_dos", jTxtCargoPersona2.getText());
+                        parameters4.put("persona_tres", txtPersona3.getText());
+                        parameters4.put("cargo_persona_tres", jTxtCargoPersona3.getText());
+                        parameters4.put("persona_cuatro", txtPersona4.getText());
+                        parameters4.put("cargo_persona_cuatro", jTxtCargoPersona4.getText());
+                        JasperPrint impresion4 = JasperFillManager.fillReport(rutaJasperFile, parameters4, new JREmptyDataSource());
+                        JasperExportManager.exportReportToPdfFile(impresion4, rutaGuardarReporte);
+                        JasperViewer.viewReport(impresion4, false);
+                        parameters4 = null;
+                        break;
+                    case 5:
+                        rutaJRXML += JGlobalVariables.getReporteJRXMLPersona(4);
+                        rutaJasperFile += JGlobalVariables.getJasperReportFile(4);
+                        JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
+                        Map<String, Object> parameters5 = new HashMap<>();
+                        parameters5.put("clues_unidad", this.txtCLUES.getText());
+                        parameters5.put("descripcion_actividad", this.txtActividadesSup.getText());
+                        parameters5.put("depto_supervisor", String.valueOf(cbDepartamento.getSelectedItem()));
+                        parameters5.put("fecha_supervision", JGlobalVariables.getFechaSupervision());
+                        parameters5.put("persona_uno", txtPersona1.getText());
+                        parameters5.put("cargo_persona_uno", jTxtCargoPersona1.getText());
+                        parameters5.put("persona_dos", txtPersona2.getText());
+                        parameters5.put("cargo_persona_dos", jTxtCargoPersona2.getText());
+                        parameters5.put("persona_tres", txtPersona3.getText());
+                        parameters5.put("cargo_persona_tres", jTxtCargoPersona3.getText());
+                        parameters5.put("persona_cuatro", txtPersona4.getText());
+                        parameters5.put("cargo_persona_cuatro", jTxtCargoPersona4.getText());
+                        parameters5.put("persona_cinco", txtPersona5.getText());
+                        parameters5.put("cargo_persona_cinco", jTxtCargoPersona5.getText());
+                        JasperPrint impresion5 = JasperFillManager.fillReport(rutaJasperFile, parameters5, new JREmptyDataSource());
+                        JasperExportManager.exportReportToPdfFile(impresion5, rutaGuardarReporte);
+                        JasperViewer.viewReport(impresion5, false);
+                        parameters5 = null;
+                        break;
+                    case 6:
+                        rutaJRXML += JGlobalVariables.getReporteJRXMLPersona(5);
+                        rutaJasperFile += JGlobalVariables.getJasperReportFile(5);
+                        JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
+                        Map<String, Object> parameters6 = new HashMap<>();
+                        parameters6.put("clues_unidad", this.txtCLUES.getText());
+                        parameters6.put("descripcion_actividad", this.txtActividadesSup.getText());
+                        parameters6.put("depto_supervisor", String.valueOf(cbDepartamento.getSelectedItem()));
+                        parameters6.put("fecha_supervision", JGlobalVariables.getFechaSupervision());
+                        parameters6.put("persona_uno", txtPersona1.getText());
+                        parameters6.put("cargo_persona_uno", jTxtCargoPersona1.getText());
+                        parameters6.put("persona_dos", txtPersona2.getText());
+                        parameters6.put("cargo_persona_dos", jTxtCargoPersona2.getText());
+                        parameters6.put("persona_tres", txtPersona3.getText());
+                        parameters6.put("cargo_persona_tres", jTxtCargoPersona3.getText());
+                        parameters6.put("persona_cuatro", txtPersona4.getText());
+                        parameters6.put("cargo_persona_cuatro", jTxtCargoPersona4.getText());
+                        parameters6.put("persona_cinco", txtPersona5.getText());
+                        parameters6.put("cargo_persona_cinco", jTxtCargoPersona5.getText());
+                        parameters6.put("persona_seis", txtPersona6.getText());
+                        parameters6.put("cargo_persona_seis", jTxtCargoPersona6.getText());
+                        JasperPrint impresion6 = JasperFillManager.fillReport(rutaJasperFile, parameters6, new JREmptyDataSource());
+                        JasperExportManager.exportReportToPdfFile(impresion6, rutaGuardarReporte);
+                        JasperViewer.viewReport(impresion6, false);
+                        parameters6 = null;
+                        break;
+                    default:
+                        break;
+                }
+            } catch (JRException e) {
+                System.out.print(e);
             }
-        } catch(JRException e){
-            System.out.print(e);
-        }        
+
+        }
+
     }
+
     /**
      * @param args the command line arguments
      */
@@ -875,6 +948,11 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
