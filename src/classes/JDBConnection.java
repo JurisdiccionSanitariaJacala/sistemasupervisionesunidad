@@ -46,7 +46,7 @@ public class JDBConnection {
             stat = conn.createStatement();
             DatabaseMetaData meta = conn.getMetaData();
             //JOptionPane.showMessageDialog(null, "Conexión exitosa");
-            System.out.println("Conexión exitosa");
+            //System.out.println("Conexión exitosa");
         } 
         catch(Exception e){
             System.out.println("Error: "+e.getMessage());

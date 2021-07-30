@@ -6,6 +6,7 @@
 package sistemasupervisionesunidad;
 
 import java.net.URI;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -110,10 +111,10 @@ public class JFrmAcercaDe extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         try{
-            url = new URI("https://github.com/christiancastillo/sistemainventariosyalmacen/tree/desarrollo");
+            url = new URI("https://github.com/JurisdiccionSanitariaJacala/sistemasupervisionesunidad");
             java.awt.Desktop.getDesktop().browse(url);
         } catch(Exception e){
-            
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

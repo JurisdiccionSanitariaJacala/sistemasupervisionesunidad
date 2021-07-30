@@ -438,12 +438,11 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
         boolean isIDJTableEmpty = false;
         
         isIDJTableEmpty = jTxtID.getText().equals("");
-        JOptionPane.showMessageDialog(this, isIDJTableEmpty);
         
-            if(jTHistorialSup.getRowCount() > 0 || isIDJTableEmpty == false){
+            if(jTHistorialSup.getRowCount() > 0){
                 recuperarDatosDB();
             } else {
-                JOptionPane.showMessageDialog(this, "Advertencia: No puede generar el reporte si no se tienen datos seleccionados, \nhaga clic sobre cualquier parte de la tabla para obtener datos.");
+                JOptionPane.showMessageDialog(this, "Advertencia: No puede generar el reporte si no se tienen datos seleccionados, actualice la tabla y \nhaga clic sobre cualquier parte de la tabla para obtener datos.");
             }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -485,24 +484,28 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
      * Metodo para recuperar informacion de la base de datos y posteriormente almacenarla en variables globales
      */    
     public void recuperarDatosDB(){
-        try{
-            JDBConnection.openConnection();        
-            String qr = "SELECT desc_activ, num_personas, cargo_persona_uno, cargo_persona_dos, cargo_persona_tres, cargo_persona_cuatro, cargo_persona_cinco, cargo_persona_seis FROM supervision INNER JOIN departamento on supervision.id_departamento = departamento.iddepartamento AND supervision.idsupervision="+jTxtID.getText()+";";
-            ResultSet rsQuery = JDBConnection.selectAll(qr);        
-            JGlobalVariables.setNumeroPersonasLetra(rsQuery.getString("num_personas"));
-            JGlobalVariables.setCargoPersonaUno(rsQuery.getString("cargo_persona_uno"));
-            JGlobalVariables.setCargoPersonaDos(rsQuery.getString("cargo_persona_dos"));
-            JGlobalVariables.setCargoPersonaTres(rsQuery.getString("cargo_persona_tres"));
-            JGlobalVariables.setCargoPersonaCuatro(rsQuery.getString("cargo_persona_cuatro"));
-            JGlobalVariables.setCargoPersonaCinco(rsQuery.getString("cargo_persona_cinco"));
-            JGlobalVariables.setCargoPersonaSeis(rsQuery.getString("cargo_persona_seis"));
-            JGlobalVariables.setDescripcionActividades(rsQuery.getString("desc_activ"));                                    
-            //llamar al metodo para generar reportes de acuerdo al numero de personas
-            JOptionPane.showMessageDialog(this, JGlobalVariables.getNumeroPersonasLetra());
-            generarReporte(JGlobalVariables.getNumeroPersonasLetra());
-            JDBConnection.closeConnection();
+        if(!jTxtID.getText().equals("")){
+            try{
+                JDBConnection.openConnection();        
+                String qr = "SELECT desc_activ, num_personas, cargo_persona_uno, cargo_persona_dos, cargo_persona_tres, cargo_persona_cuatro, cargo_persona_cinco, cargo_persona_seis FROM supervision INNER JOIN departamento on supervision.id_departamento = departamento.iddepartamento AND supervision.idsupervision="+jTxtID.getText()+";";
+                ResultSet rsQuery = JDBConnection.selectAll(qr);        
+                JGlobalVariables.setNumeroPersonasLetra(rsQuery.getString("num_personas"));
+                JGlobalVariables.setCargoPersonaUno(rsQuery.getString("cargo_persona_uno"));
+                JGlobalVariables.setCargoPersonaDos(rsQuery.getString("cargo_persona_dos"));
+                JGlobalVariables.setCargoPersonaTres(rsQuery.getString("cargo_persona_tres"));
+                JGlobalVariables.setCargoPersonaCuatro(rsQuery.getString("cargo_persona_cuatro"));
+                JGlobalVariables.setCargoPersonaCinco(rsQuery.getString("cargo_persona_cinco"));
+                JGlobalVariables.setCargoPersonaSeis(rsQuery.getString("cargo_persona_seis"));
+                JGlobalVariables.setDescripcionActividades(rsQuery.getString("desc_activ"));                                    
+                //llamar al metodo para generar reportes de acuerdo al numero de personas
+                JOptionPane.showMessageDialog(this, JGlobalVariables.getNumeroPersonasLetra());
+                generarReporte(JGlobalVariables.getNumeroPersonasLetra());
+                JDBConnection.closeConnection();
         } catch(SQLException e){
             JOptionPane.showMessageDialog(this, "Error: "+e.getMessage()+"\n No hay datos.");
+        }
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor seleccione una fila de la tabla para visualizar reportes anteriores.");
         }
     }
     
@@ -515,6 +518,8 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
         String rutaJRXML = JGlobalVariables.getRutaJRXml();
         String rutaJasperFile = JGlobalVariables.getRutaJasperFile();
         final String rutaGuardarReporte = JGlobalVariables.getRutaGuardadoReporte();
+        
+        JOptionPane.showMessageDialog(this, "El reporte no se guardará automáticamente, pero si puede hacerlo mediante el visor del reporte.");
         
         try{
             if(numPersonas.equals("1 PERSONA")){
@@ -583,7 +588,6 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
                 parameters.put("persona_cuatro",JGlobalVariables.getPersonaCuatro());
                 parameters.put("cargo_persona_cuatro",JGlobalVariables.getCargoPersonaCuatro());                                
                 JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters,new JREmptyDataSource());
-                JasperExportManager.exportReportToPdfFile(impresion, rutaGuardarReporte);        
                 JasperViewer.viewReport(impresion, false);
                 parameters = null;                                                
             } else if (numPersonas.equals("5 PERSONAS")){
@@ -605,8 +609,7 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
                 parameters.put("cargo_persona_cuatro",JGlobalVariables.getCargoPersonaCuatro());                                
                 parameters.put("persona_cinco",JGlobalVariables.getPersonaCinco());
                 parameters.put("cargo_persona_cinco",JGlobalVariables.getCargoPersonaCinco());   
-                JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters,new JREmptyDataSource());
-                JasperExportManager.exportReportToPdfFile(impresion, rutaGuardarReporte);        
+                JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters,new JREmptyDataSource()); 
                 JasperViewer.viewReport(impresion, false);                
             } else if (numPersonas.equals("6 PERSONAS")){
                 rutaJRXML+=JGlobalVariables.getReporteJRXMLPersona(5);
@@ -627,10 +630,9 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
                 parameters.put("cargo_persona_cuatro",JGlobalVariables.getCargoPersonaCuatro());                                
                 parameters.put("persona_cinco",JGlobalVariables.getPersonaCinco());
                 parameters.put("cargo_persona_cinco",JGlobalVariables.getCargoPersonaCinco());                                                                     
-                parameters.put("persona_seis",JGlobalVariables.getPersonaCinco());
-                parameters.put("cargo_persona_seis",JGlobalVariables.getCargoPersonaCinco());
-                JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters,new JREmptyDataSource());
-                JasperExportManager.exportReportToPdfFile(impresion, rutaGuardarReporte);                        
+                parameters.put("persona_seis",JGlobalVariables.getPersonaSeis());
+                parameters.put("cargo_persona_seis",JGlobalVariables.getCargoPersonaSeis());
+                JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters,new JREmptyDataSource());                                       
                 JasperViewer.viewReport(impresion, false);                
             }            
         }catch(Exception e) {

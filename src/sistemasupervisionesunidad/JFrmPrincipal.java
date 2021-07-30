@@ -5,6 +5,7 @@
  */
 package sistemasupervisionesunidad;
 import classes.JReportMaker;
+import classes.JSingletonFrame;
 
 /**
  *
@@ -118,7 +119,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        JFrmNuevaSupervision frmNuevaSup = new JFrmNuevaSupervision();
+        JFrmNuevaSupervision frmNuevaSup = JSingletonFrame.getJFrmNuevaSupervision();
         frmNuevaSup.setVisible(true);
         //Funcion();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
@@ -129,14 +130,15 @@ public class JFrmPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-        JFrmHistorialSupervisiones frmHistorialS = new JFrmHistorialSupervisiones();
+        JFrmHistorialSupervisiones frmHistorialS = JSingletonFrame.getFrmHistorialSupervisiones();
         frmHistorialS.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        JFrmAcercaDe frmAcercaDe = new JFrmAcercaDe();
+        JFrmAcercaDe frmAcercaDe = JSingletonFrame.getFrmAcercaDe();
         frmAcercaDe.setVisible(true);
+        //JSingletonFrame.getInstance();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void Funcion(){

@@ -25,8 +25,8 @@ public class JConfigValues {
     public void loadValues(){
         try{
             Properties prop = new Properties();
-            String archivoProps = "src/resources/config.properties";
-            is = getClass().getClassLoader().getResourceAsStream("config.properties");
+            String archivoProps = "C:\\supervisionesssh\\config.properties";
+            is = getClass().getClassLoader().getResourceAsStream("src\\resources\\config.properties");
             
             if (is != null){
                 prop.load(is);
