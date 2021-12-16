@@ -500,7 +500,7 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
                 JGlobalVariables.setCargoPersonaSeis(rsQuery.getString("cargo_persona_seis"));
                 JGlobalVariables.setDescripcionActividades(rsQuery.getString("desc_activ"));                                    
                 //llamar al metodo para generar reportes de acuerdo al numero de personas
-                JOptionPane.showMessageDialog(this, JGlobalVariables.getNumeroPersonasLetra());
+                //JOptionPane.showMessageDialog(this, JGlobalVariables.getNumeroPersonasLetra());
                 generarReporte(JGlobalVariables.getNumeroPersonasLetra());
                 JDBConnection.closeConnection();
         } catch(SQLException e){

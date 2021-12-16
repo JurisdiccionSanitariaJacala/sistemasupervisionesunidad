@@ -105,7 +105,13 @@ public class JDBConnection {
         try {
             //stat.executeQuery(SQLquery);
             //fecha_super, clues_unidad, desc_activ, nombre_unidad, motivo_superv,num_personas, persona_uno, persona_dos, persona_tres, persona_cuatro, persona_cinco, persona_seis
-            prepStat = conn.prepareStatement("INSERT INTO supervision (fecha_super, clues_unidad, desc_activ, nombre_unidad, motivo_superv,num_personas, persona_uno, persona_dos, persona_tres, persona_cuatro, persona_cinco, persona_seis, id_departamento,"
+            prepStat = conn.prepareStatement("INSERT INTO supervision ("
+                    + "fecha_super, clues_unidad,"
+                    + "desc_activ, nombre_unidad, "
+                    + "motivo_superv,num_personas, "
+                    + "persona_uno, persona_dos, "
+                    + "persona_tres, persona_cuatro, "
+                    + "persona_cinco, persona_seis, id_departamento,"
                     + "cargo_persona_uno, cargo_persona_dos,"
                     + "cargo_persona_tres, cargo_persona_cuatro,"
                     + "cargo_persona_cinco, cargo_persona_seis) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
@@ -122,6 +128,12 @@ public class JDBConnection {
             prepStat.setString(11, personaCinco);
             prepStat.setString(12, personaSeis);
             prepStat.setInt(13, deptId);
+            prepStat.setString(14,cargoPersonaUno);
+            prepStat.setString(15,cargoPersonaDos);
+            prepStat.setString(16,cargoPersonaTres);
+            prepStat.setString(17,cargoPersonaCuatro);
+            prepStat.setString(18,cargoPersonaCinco);
+            prepStat.setString(19,cargoPersonaSeis);
             prepStat.executeUpdate();
         } catch(Exception e){
             System.out.println("Error: "+e.getMessage());

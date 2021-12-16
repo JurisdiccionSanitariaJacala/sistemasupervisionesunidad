@@ -10,6 +10,7 @@ import sistemasupervisionesunidad.JFrmHistorialSupervisiones;
 import sistemasupervisionesunidad.JFrmNuevaSupervision;
 import sistemasupervisionesunidad.JFrmPropertiesConfig;
 import net.sf.jasperreports.view.JasperViewer;
+import net.sf.jasperreports.engine.JasperPrint;
 
 
 
@@ -17,7 +18,7 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author usuario
  */
-import net.sf.jasperreports.engine.JasperPrint;
+
 public class JSingletonFrame{
     private static JFrmAcercaDe frmAcercaDe;
     private static JFrmHistorialSupervisiones frmHistorialSupervisiones;

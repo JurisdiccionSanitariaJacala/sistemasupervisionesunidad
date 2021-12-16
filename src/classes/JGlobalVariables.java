@@ -35,10 +35,28 @@ public class JGlobalVariables {
     private static String cargoPersonaCinco = "";
     private static String cargoPersonaSeis = "";
     private static String fechaSupervisionDDMMYY = "";
+    private static String motivoSupervision = "";
+    private static String departamentoSupervisor = "";
+
+    public static String getDepartamentoSupervisor() {
+        return departamentoSupervisor;
+    }
+
+    public static void setDepartamentoSupervisor(String aDepartamentoSupervisor) {
+        JGlobalVariables.departamentoSupervisor = aDepartamentoSupervisor;
+    }
         
     
     public static String getNombreDepartementoSup() {
         return nombreDepartementoSup;
+    }
+    
+    public static String getMotivoSupervision(){
+        return motivoSupervision;
+    }
+    
+    public static void setMotivoSupervision(String aMotivoSupervision) {
+        motivoSupervision = aMotivoSupervision;
     }
 
     public static String getRutaGuardadoReporte() {

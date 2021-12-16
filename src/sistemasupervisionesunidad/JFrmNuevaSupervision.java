@@ -465,6 +465,8 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         String fechaDMY = sdf.format(dpFechaSupervision.getDate());
+        
+        //validadores
         isFechaSupervisionEmpty = dpFechaSupervision.getDate() == null;
         isClaveCLUESEmpty = txtCLUES.getText().equals("");
         isNombreUnidadEmpty = txtUnidad.getText().equals("");
@@ -481,16 +483,33 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
         isCargoPersonaEmpty[3] = jTxtCargoPersona4.getText().equals("");
         isCargoPersonaEmpty[4] = jTxtCargoPersona5.getText().equals("");
         isCargoPersonaEmpty[5] = jTxtCargoPersona6.getText().equals("");
+        
         JGlobalVariables.setFechaSupervision(fechaDMY);
         JGlobalVariables.setClues(txtCLUES.getText());
         JGlobalVariables.setDescripcionActividades(txtActividadesSup.getText());
         JGlobalVariables.setIdDepartamento(cbDepartamento.getSelectedIndex() + 1);
+        JGlobalVariables.setNombreUnidad(txtUnidad.getText());
+        JGlobalVariables.setMotivoSupervision(txtMotivoSupervision.getText());
+        JGlobalVariables.setNumeroPersonasLetra(String.valueOf(cbNumPersonas.getSelectedItem()));
+        JGlobalVariables.setPersonaUno(txtPersona1.getText());
+        JGlobalVariables.setPersonaDos(txtPersona2.getText());
+        JGlobalVariables.setPersonaTres(txtPersona3.getText());
+        JGlobalVariables.setPersonaCuatro(txtPersona4.getText());
+        JGlobalVariables.setPersonaCinco(txtPersona5.getText());
+        JGlobalVariables.setPersonaSeis(txtPersona6.getText());
+        JGlobalVariables.setCargoPersonaUno(jTxtCargoPersona1.getText());
+        JGlobalVariables.setCargoPersonaDos(jTxtCargoPersona2.getText());
+        JGlobalVariables.setCargoPersonaTres(jTxtCargoPersona3.getText());
+        JGlobalVariables.setCargoPersonaCuatro(jTxtCargoPersona4.getText());
+        JGlobalVariables.setCargoPersonaCinco(jTxtCargoPersona5.getText());
+        JGlobalVariables.setCargoPersonaSeis(jTxtCargoPersona6.getText());
+        //JGlobalVariables.setDepartamentoSupervisor(jTxtD);                
 
         int idDepartamento = 0;
 
         try {
-            if (isFechaSupervisionEmpty || isClaveCLUESEmpty || isNombreUnidadEmpty 
-                    || isDescripcionActividadesEmpty ) {
+            if (isFechaSupervisionEmpty || isClaveCLUESEmpty 
+                    || isNombreUnidadEmpty || isDescripcionActividadesEmpty ) {
                 JOptionPane.showMessageDialog(this, "Por favor rellene los campos que estan marcados como obligatorios.");
             } else {                
                 idDepartamento = cbDepartamento.getSelectedIndex() + 1;
@@ -502,15 +521,19 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
                         isNombrePersonaEmpty[5] || isCargoPersonaEmpty[5]){
                     JOptionPane.showMessageDialog(this, "El nombre y cargo son opcionales, si hay campos vacios, \n el reporte no contendra dichos datos, pero será generado.");
                 }
-                JDBConnection.openConnection();
-                JDBConnection.insertQuery(fechaDMY, txtCLUES.getText(), txtActividadesSup.getText(),
-                txtUnidad.getText(), txtMotivoSupervision.getText(),
-                String.valueOf(cbNumPersonas.getSelectedItem()), txtPersona1.getText(),
-                txtPersona2.getText(), txtPersona3.getText(), txtPersona4.getText(),
-                txtPersona5.getText(), txtPersona6.getText(), idDepartamento,
-                jTxtCargoPersona1.getText(), jTxtCargoPersona2.getText(),
-                jTxtCargoPersona3.getText(), jTxtCargoPersona4.getText(),
-                jTxtCargoPersona5.getText(), jTxtCargoPersona6.getText());
+                //asignacion de variables globales                
+                JDBConnection.openConnection();               
+                JOptionPane.showMessageDialog(this, "Cargo: "+JGlobalVariables.getCargoPersonaUno());
+                JDBConnection.insertQuery(
+                    JGlobalVariables.getFechaSupervision(), JGlobalVariables.getClues(), JGlobalVariables.getDescripcionActividades(),
+                    JGlobalVariables.getNombreUnidad(), JGlobalVariables.getMotivoSupervision(),
+                    JGlobalVariables.getNumeroPersonasLetra(), JGlobalVariables.getPersonaUno(),
+                    JGlobalVariables.getPersonaDos(), JGlobalVariables.getPersonaTres(), JGlobalVariables.getPersonaCuatro(),
+                    JGlobalVariables.getPersonaCinco(), JGlobalVariables.getPersonaSeis(), idDepartamento,
+                    JGlobalVariables.getCargoPersonaUno(), JGlobalVariables.getCargoPersonaDos(),
+                    JGlobalVariables.getCargoPersonaTres(), JGlobalVariables.getCargoPersonaCuatro(),
+                    JGlobalVariables.getCargoPersonaCinco(), JGlobalVariables.getCargoPersonaUno()
+                );
                 generarReporte(String.valueOf(cbNumPersonas.getSelectedItem()).substring(0, 1));
                 JDBConnection.closeConnection();                
             }
@@ -632,7 +655,7 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
                 jTxtCargoPersona6.setEnabled(true);
                 break;
             default:
-                JOptionPane.showMessageDialog(null, "Prueba de mensaje");
+                //JOptionPane.showMessageDialog(null, "Prueba de mensaje");
                 break;
         }
     }//GEN-LAST:event_cbNumPersonasActionPerformed
@@ -787,12 +810,12 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
                     rutaJasperFile += JGlobalVariables.getJasperReportFile(0);
                     JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
                     Map<String, Object> parameters = new HashMap<>();
-                    parameters.put("clues_unidad", this.txtCLUES.getText());
-                    parameters.put("descripcion_actividad", this.txtActividadesSup.getText());
+                    parameters.put("clues_unidad", JGlobalVariables.getClues());
+                    parameters.put("descripcion_actividad", JGlobalVariables.getDescripcionActividades());
                     parameters.put("depto_supervisor", String.valueOf(cbDepartamento.getSelectedItem()));
                     parameters.put("fecha_supervision", JGlobalVariables.getFechaSupervision());
-                    parameters.put("persona_uno", txtPersona1.getText());
-                    parameters.put("cargo_persona_uno", jTxtCargoPersona1.getText());
+                    parameters.put("persona_uno", JGlobalVariables.getPersonaUno());
+                    parameters.put("cargo_persona_uno", JGlobalVariables.getCargoPersonaUno());
                     JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters, new JREmptyDataSource());
                     JasperExportManager.exportReportToPdfFile(impresion, rutaGuardarReporte);
                     JasperViewer.viewReport(impresion, false);
