@@ -101,6 +101,7 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
                 "ID", "CLUES", "Unidad", "Departamento", "Persona 1", "Persona 2", "Persona 3", "Persona 4", "Persona 5", "Persona 6", "Fecha superv"
             }
         ));
+        jTHistorialSup.setFocusable(false);
         jTHistorialSup.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }

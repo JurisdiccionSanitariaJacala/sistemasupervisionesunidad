@@ -72,6 +72,7 @@ public class JGlobalVariables {
     }
     
     public static String getRutaGuardadoReporte(String nombreArchivo) {
+        //getClass().getResource(C:\\supervisionesssh\\repo\\"+nombreArchivo+".pdf);
         return "C:\\supervisionesssh\\repo\\"+nombreArchivo+".pdf";
     }
     

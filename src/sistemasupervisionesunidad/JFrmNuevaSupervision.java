@@ -523,7 +523,6 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
                 }
                 //asignacion de variables globales                
                 JDBConnection.openConnection();               
-                JOptionPane.showMessageDialog(this, "Cargo: "+JGlobalVariables.getCargoPersonaUno());
                 JDBConnection.insertQuery(
                     JGlobalVariables.getFechaSupervision(), JGlobalVariables.getClues(), JGlobalVariables.getDescripcionActividades(),
                     JGlobalVariables.getNombreUnidad(), JGlobalVariables.getMotivoSupervision(),
@@ -794,21 +793,23 @@ public class JFrmNuevaSupervision extends javax.swing.JFrame {
      * <code>String</code>, después se procesa para cambiarlo a int y utilizarlo
      * en un <code>switch</code>.
      */
-    private void generarReporte(String numeroDePersonas) {
+    private void generarReporte(String numeroDePersonas){
         String nombreArchivo = "visita-" + cbDepartamento.getSelectedItem() + "-" + JGlobalVariables.getClues() + "-" + JGlobalVariables.getFechaSupervisionDDMMYY();
         Integer.parseInt(String.valueOf(numeroDePersonas));
         String rutaGuardarReporte = JGlobalVariables.getRutaGuardadoReporte(nombreArchivo);
         //String rutaJRXML = "C:\\supervisionesssh\\repo\\jsp\\";
         //String rutaJasperFile = "C:\\supervisionesssh\\repo\\jsp\\";
         String rutaJRXML = JGlobalVariables.getRutaJRXml();
-        String rutaJasperFile = JGlobalVariables.getRutaJasperFile();
+        String rutaJasperFile = JGlobalVariables.getRutaJasperFile();        
 
         try {
+            //JasperReport reporteUnaP = JasperCompileManager.compileReport(getClass().getResourceAsStream("/reports/RSupervisionAIUnaPersona.jrxml")); //TODO: Investigar como cargar desde el CLASSPATH
             switch (Integer.parseInt(String.valueOf(numeroDePersonas))) {
                 case 1:
                     rutaJRXML += JGlobalVariables.getReporteJRXMLPersona(0);
                     rutaJasperFile += JGlobalVariables.getJasperReportFile(0);
                     JasperCompileManager.compileReportToFile(rutaJRXML, rutaJasperFile);
+
                     Map<String, Object> parameters = new HashMap<>();
                     parameters.put("clues_unidad", JGlobalVariables.getClues());
                     parameters.put("descripcion_actividad", JGlobalVariables.getDescripcionActividades());
