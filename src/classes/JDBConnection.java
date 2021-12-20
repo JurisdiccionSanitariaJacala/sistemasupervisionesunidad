@@ -48,9 +48,15 @@ public class JDBConnection {
             //JOptionPane.showMessageDialog(null, "Conexión exitosa");
             //System.out.println("Conexión exitosa");
         } 
-        catch(Exception e){
+        catch(SQLException e){
             System.out.println("Error: "+e.getMessage());
-        }       
+        } 
+        catch(IOException fnf){
+            System.out.println("Error, archivo no encontrado..");
+        }
+        catch(ClassNotFoundException cnf){
+            System.out.println("Error: "+cnf.getMessage()+" , clase no encontrada...");
+        }
         finally {
             //closeConnection();
         }
@@ -67,7 +73,7 @@ public class JDBConnection {
     public static void closeConnection(){
         try {
             conn.close();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Error: "+e.getMessage());
         }        
     }
