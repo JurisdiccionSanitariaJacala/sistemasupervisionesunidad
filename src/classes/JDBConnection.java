@@ -51,9 +51,9 @@ public class JDBConnection {
         catch(SQLException e){
             System.out.println("Error: "+e.getMessage());
         } 
-        catch(IOException fnf){
-            System.out.println("Error, archivo no encontrado..");
-        }
+        //catch(IOException fnf){
+        //    System.out.println("Error, archivo no encontrado..");
+        //}
         catch(ClassNotFoundException cnf){
             System.out.println("Error: "+cnf.getMessage()+" , clase no encontrada...");
         }

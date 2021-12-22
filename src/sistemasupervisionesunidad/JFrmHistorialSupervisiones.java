@@ -42,6 +42,7 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
      */
     public JFrmHistorialSupervisiones() {
         initComponents();        
+        jTHistorialSup.setDefaultEditor(Object.class, null);
     }
 
     /**
