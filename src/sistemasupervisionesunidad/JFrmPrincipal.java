@@ -119,8 +119,10 @@ public class JFrmPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        JFrmNuevaSupervision frmNuevaSup = JSingletonFrame.getJFrmNuevaSupervision();
-        frmNuevaSup.setVisible(true);
+        //JFrmNuevaSupervision frmNuevaSup = JSingletonFrame.getJFrmNuevaSupervision();
+        
+        new JFrmNuevaSupervision().setVisible(true);
+        
         //Funcion();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
@@ -130,19 +132,22 @@ public class JFrmPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-        JFrmHistorialSupervisiones frmHistorialS = JSingletonFrame.getFrmHistorialSupervisiones();
-        frmHistorialS.setVisible(true);
+        //new JFrmPrincipal().setVisible(true);
+        new JFrmHistorialSupervisiones().setVisible(true);
+        //JFrmHistorialSupervisiones frmHistorialS = JSingletonFrame.getFrmHistorialSupervisiones();
+        //frmHistorialS.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        JFrmAcercaDe frmAcercaDe = JSingletonFrame.getFrmAcercaDe();
-        frmAcercaDe.setVisible(true);
+        new JFrmAcercaDe().setVisible(true);
+        //JFrmAcercaDe frmAcercaDe = JSingletonFrame.getFrmAcercaDe();
+        //frmAcercaDe.setVisible(true);
         //JSingletonFrame.getInstance();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void Funcion(){
-            reportMaker = new JReportMaker(){ //clase anonima
+            reportMaker = new JReportMaker(){ //funcion anonima
             public void Print(){
                 System.out.println("HELLO WORLD");
             }
