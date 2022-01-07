@@ -41,26 +41,16 @@ public class JDBConnection {
             Class.forName("org.sqlite.JDBC");   
             String url = "jdbc:sqlite:C:\\supervisionesssh\\db.db";
             conn = DriverManager.getConnection(url);
-            cn = conn;
-            
+            cn = conn;            
             stat = conn.createStatement();
             DatabaseMetaData meta = conn.getMetaData();
             //JOptionPane.showMessageDialog(null, "Conexión exitosa");
             //System.out.println("Conexión exitosa");
-        } 
-        catch(SQLException e){
+        } catch(SQLException e){
             System.out.println("Error: "+e.getMessage());
-        } 
-        //catch(IOException fnf){
-        //    System.out.println("Error, archivo no encontrado..");
-        //}
-        catch(ClassNotFoundException cnf){
+        } catch(ClassNotFoundException cnf){
             System.out.println("Error: "+cnf.getMessage()+" , clase no encontrada...");
         }
-        finally {
-            //closeConnection();
-        }
-        // st.execute("") //
     }
     
     public static Connection getConnection(){
@@ -201,7 +191,9 @@ public class JDBConnection {
         try{
             stat = conn.createStatement();
             rs = stat.executeQuery(sql);
-        } catch (Exception e){
+        } catch(SQLException e){ //orden: heredadas primero y origen al final
+            
+        }catch (Exception e){
             System.out.println("errorrrr: "+e.getMessage());
         }
         

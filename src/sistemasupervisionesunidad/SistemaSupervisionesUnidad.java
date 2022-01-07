@@ -10,7 +10,6 @@ package sistemasupervisionesunidad;
  * @author INVENTARIOS
  */
 public class SistemaSupervisionesUnidad {
-
     /**
      * @param args the command line arguments
      */

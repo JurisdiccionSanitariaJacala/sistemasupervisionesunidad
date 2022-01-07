@@ -388,8 +388,7 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
         JGlobalVariables.setPersonaCuatro(jTHistorialSup.getValueAt(jTHistorialSup.getSelectedRow(),7).toString());
         JGlobalVariables.setPersonaCinco(jTHistorialSup.getValueAt(jTHistorialSup.getSelectedRow(),8).toString());
         JGlobalVariables.setPersonaSeis(jTHistorialSup.getValueAt(jTHistorialSup.getSelectedRow(),9).toString());
-        idDep = String.valueOf(jTHistorialSup.getValueAt(jTHistorialSup.getSelectedRow(), 0));        
-        JGlobalVariables.setIdDepartamento(Integer.valueOf(idDep));               
+        JGlobalVariables.setIdDepartamento(Integer.valueOf(String.valueOf(jTHistorialSup.getValueAt(jTHistorialSup.getSelectedRow(), 0))));               
         
         jTxtCLUES.setText(JGlobalVariables.getClues());
         jTxtDepto.setText(JGlobalVariables.getNombreDepartementoSup());
@@ -401,7 +400,7 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
         jTxtPersonaCuatro.setText(JGlobalVariables.getPersonaCuatro());
         jTxtPersonaCinco.setText(JGlobalVariables.getPersonaCinco());
         jTxtPersonaSeis.setText(JGlobalVariables.getPersonaSeis());
-        jTxtID.setText(idDep);
+        jTxtID.setText(String.valueOf(JGlobalVariables.getIdDepartamento()));
     }//GEN-LAST:event_jTHistorialSupMouseClicked
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
