@@ -539,6 +539,7 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
                 JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters,new JREmptyDataSource());
                 JasperViewer.viewReport(impresion, false);
                 parameters = null;                
+                parameters.clear();
             } else if (numPersonas.equals("2 PERSONAS")){
                 rutaJRXML+=JGlobalVariables.getReporteJRXMLPersona(1);
                 rutaJasperFile+=JGlobalVariables.getJasperReportFile(1);
@@ -555,6 +556,7 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
                 JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters,new JREmptyDataSource());
                 JasperViewer.viewReport(impresion, false);
                 parameters = null;                                
+                parameters.clear();
             } else if (numPersonas.equals("3 PERSONAS")){
                 rutaJRXML+=JGlobalVariables.getReporteJRXMLPersona(2);
                 rutaJasperFile+=JGlobalVariables.getJasperReportFile(2);
@@ -572,7 +574,9 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
                 parameters.put("cargo_persona_tres",JGlobalVariables.getCargoPersonaTres());                                
                 JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters,new JREmptyDataSource());    
                 JasperViewer.viewReport(impresion, false);
-                parameters = null;                                                
+                parameters = null; 
+                parameters.clear();
+                impresion = null;
             } else if (numPersonas.equals("4 PERSONAS")){
                 rutaJRXML+=JGlobalVariables.getReporteJRXMLPersona(3);
                 rutaJasperFile+=JGlobalVariables.getJasperReportFile(3);
@@ -593,6 +597,7 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
                 JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters,new JREmptyDataSource());
                 JasperViewer.viewReport(impresion, false);
                 parameters = null;                                                
+                impresion = null;
             } else if (numPersonas.equals("5 PERSONAS")){
                 rutaJRXML+=JGlobalVariables.getReporteJRXMLPersona(4);
                 rutaJasperFile+=JGlobalVariables.getJasperReportFile(4);
@@ -614,6 +619,8 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
                 parameters.put("cargo_persona_cinco",JGlobalVariables.getCargoPersonaCinco());   
                 JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters,new JREmptyDataSource()); 
                 JasperViewer.viewReport(impresion, false);                
+                parameters = null;
+                impresion = null;
             } else if (numPersonas.equals("6 PERSONAS")){
                 rutaJRXML+=JGlobalVariables.getReporteJRXMLPersona(5);
                 rutaJasperFile+=JGlobalVariables.getJasperReportFile(5);
@@ -637,43 +644,13 @@ public class JFrmHistorialSupervisiones extends javax.swing.JFrame {
                 parameters.put("cargo_persona_seis",JGlobalVariables.getCargoPersonaSeis());
                 JasperPrint impresion = JasperFillManager.fillReport(rutaJasperFile, parameters,new JREmptyDataSource());                                       
                 JasperViewer.viewReport(impresion, false);                
+                parameters = null;
+                impresion = null;
             }            
         }catch(Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
-    }
-    
-    
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFrmHistorialSupervisiones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFrmHistorialSupervisiones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFrmHistorialSupervisiones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFrmHistorialSupervisiones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JFrmHistorialSupervisiones().setVisible(true);
-            }
-        });
-    }
+    }      
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
